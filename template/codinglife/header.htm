@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="trlanfeng" />
+    <title>{$addtitle} {$webname}</title>
+    <meta name="keywords" content="{$keywords}" />
+    <meta name="description" content="<!-- if($id) -->{Base::cutStr($atl['content'],360)}<!-- END -->{$addtitle}{$webinfo}{$webname}" />
+    <link rel="stylesheet" type="text/css" href="{CSS}coding.css">
+    <script type="text/javascript" src="{JS}jquery.js"></script>
+    <script type="text/javascript" src="{JS}coding.js"></script>
+</head>
+<body>
+    <div id="start">
+        <div id="intro">
+            <div id="introCnt">
+                <h1 id="name"><a href="/"><!-- if($addtitle!='') -->{$addtitle} - <!-- end -->{$webname}</a></h1>
+                <h1 id="ticker">
+                    <strong id="first"></strong>
+                </h1>
+                <div id="ban">
+                    <a href="/" style="border: none">
+                        <img src="{IMG}touxiang160.png" alt="孤月蓝风" style="border: none">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="header">
+            <div id="headNav">
+                <ul id="navLeft">
+                    <li class="menu"><a href="/">首页</a></li>
+                    <li class="title"><a href="/" title="幻蓝阁">幻蓝阁</a></li>
+                    <!-- list:category|status=1|20|orders DESC-->
+                    <li><a href="{$weburl}{$list['staticurl']}">{$list['name']}</a></li>
+                    <!-- end -->
+                </ul>
+            </div>
+        </div>
+    </div>

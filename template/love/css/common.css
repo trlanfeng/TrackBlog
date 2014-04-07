@@ -1,0 +1,75 @@
+@charset "utf-8";
+/*---公共定义--*/
+* { margin: 0; padding: 0; font-family: "微软雅黑","宋体"; }
+
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+
+img { border: none; }
+
+a { text-decoration: none; }
+
+    a:hover { text-decoration: underline; }
+
+ul, li { list-style: none; }
+
+.clear { clear: both; width: 0; height: 0; font-size: 0; }
+
+.hide { display: none; }
+
+.nomr { margin-right: 0 !important; }
+
+.nobdb { border-bottom: none !important; }
+
+ul, li { list-style: none; }
+
+.fr { float: right; }
+.fl { float: left; }
+.h20 {width: 100%;height: 20px;}
+
+body {
+    background-color:#eee;
+}
+
+/*页头CSS*/
+.top { width: 100%; min-width: 1000px; background-color: #125EC4; height: 40px;     line-height: 40px;
+    background-color: #125EC4;}
+
+.top_in { width: 1000px; margin: 0 auto; height: 40px; }
+
+.header { width: 1000px; margin: 0 auto; padding: 20px 0; }
+
+.pagemenu { float: left; height: 30px; margin-top: 5px; }
+
+.nav { height: 40px; float: left; width: 690px; }
+
+.navi li { float: left; margin-right: 10px; }
+
+    .navi li a { font-size: 12px; display: block; padding: 0 15px; height: 30px; color: white; text-align: center; line-height: 30px; }
+
+        .navi li a:hover { color: #125EC4; background-color: white; text-decoration: none; }
+
+#blogname { margin-top: 10px; font-size: 48px; height: 70px; line-height: 65px; padding-left: 20px; border-left: 8px solid #125EC4; float: left; }
+
+    #blogname a { font-family: "微软雅黑"; }
+
+        #blogname a:link, #blogname a:visited { color: #125ec4; }
+
+        #blogname a:hover { color: #125ec4; text-decoration: none; }
+
+#blogtitle { float: left; height: 30px; line-height: 30px; font-size: 24px; font-family: "微软雅黑"; padding-left: 50px; color: #125EC4; margin-top: 38px; }
+
+.tools { float: right; margin-top: 10px; }
+
+    .tools a { display: inline-block; float: left; margin-left: 10px; }
+
+.xihuan { float: right; height: 40px; width: 180px; text-align: right; }
+
+/*页脚CSS*/
+.footer { border-top: 2px solid #125EC4; padding: 20px; margin-top: 50px; }
+
+    .footer p { line-height: 200%; font-size: 12px; font-family: "宋体"; color: #333; text-align: center; }
+
+        .footer p a { color: #333; }
+
+        .footer p span { font-family: Arial; }
+

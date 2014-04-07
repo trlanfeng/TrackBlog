@@ -1,0 +1,25 @@
+{inc:header}
+<div class="form-group">
+	<a class="btn btn-default" href="?action=link&ctrl=add">+添加</a>
+</div>
+<table class="table table-bordered">
+	<tr>
+		<th>ID</th>
+		<th>链接名称</th>
+		<th>状态</th>
+		<th >排序</th>
+		<th>描述</th>
+		<th >操作</th>
+	</tr>
+	<!-- $list AS $atl -->
+	<tr onmouseover="this.style.backgroundColor='#F4F4F4'" onmouseout="this.style.backgroundColor=''">
+		<td>{$atl['id']}</td>
+		<td><a href="?action=link&id={$atl['id']}&ctrl=edit"  >{$atl['name']}</a></td>
+		<td>{run:}echo Base::catstatus($atl['status']);{/run}</td>
+		<td>{$atl['orders']}</td>
+		<td>{$atl['content']}</td>
+		<td><a href="?action=link&id={$atl['id']}&ctrl=edit"  >编辑</a>·<a href="?action=link&id={$atl['id']}&ctrl=del" onclick="return confirm('确认删除')">删除</a></td>
+	</tr>
+	<!-- END -->
+</table>
+{inc:footer}

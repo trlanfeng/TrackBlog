@@ -1,0 +1,22 @@
+*{margin:0; padding:0;}
+/*框架*/
+html,body {height: 100%;}
+.header {height: 40px;border-bottom: 1px solid #1f262d;background-color: #2E363F;color:white;line-height: 40px;font-size: 16px;font-weight: bold;padding-left: 30px;}
+.box {border-spacing: 0;border: none;width: 100%;min-height: 100%;}
+.box .menu,.box .main {vertical-align: top;}
+.box .menu {width: 160px;background-color: #2E363F; }
+.box .main {min-width: 840px;padding: 20px 40px 20px 20px;background-color: #fff;}
+/*登录界面*/
+#loginbody{  width:338px;margin:200px auto;  padding:10px 4px; font-size:16px;background-color: white;}
+#loginbody h1 {font-size: 16px;font-weight: bold;text-align: center;padding: 10px 0;}
+#loginbody p {padding: 10px 20px;font-size: 14px;}
+#loginbody p span {display: block;float: left;width: 70px;}
+#loginname,#loginpwd{ width:160px;height:24px; border:1px solid #CCCCCC;line-height: 24px;}
+#loginbtn{ cursor:pointer;padding: 8px 10px;}
+/*左侧菜单*/
+#mainnav{background-color: #2E363F;width:160px;float:left;}
+#mainnav li{ border-bottom: #1F262D solid 1px;border-top: 1px solid #37414B; }
+#mainnav a{ display: block;height: 30px;line-height: 30px; padding-left: 50px; font-size: 12px;color: #939DA8; }
+#mainnav a:hover{ background-color: #27A9E3; color: white; text-decoration: none; }
+#mainnav a.on{ background-color: #27A9E3; color: white; text-decoration: none; }
+#mainnav .bignav{ display: block;height: 30px;line-height: 30px; padding-left: 30px; font-size: 14px;color: white; font-weight: bold; }

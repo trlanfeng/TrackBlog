@@ -1,0 +1,63 @@
+{inc:header}
+<form action="admin.php" method="post" onsubmit="return checkpwd();">
+	<!--
+	<div class="form-group">
+		<label>当前密码：</label>
+		<input class="form-control" name="old_pwd" type="password" id="old_pwd" value="" />
+	</div>
+	-->
+	<div class="form-group" id="div_pwd">
+		<label>新密码：</label>
+		<input class="form-control" name="pwd" type="password" id="pwd" />
+	</div>
+	<div class="form-group" id="div_pwd2">
+		<label>确认密码：</label>
+		<input class="form-control" name="pwd2" type="password" id="pwd2" />
+	</div>
+	<div class="form-group">
+		<input name="action" type="hidden" value="user" />
+		<input name="ctrl" type="hidden" value="update" />
+		<input class="btn btn-danger" type="submit" name="Submit" id="submits" disabled="disabled" value="修改" />
+	</div>
+</form>
+<script>
+	function checkpwd() {
+		if ($("#pwd").val() != $("#pwd2").val()) {
+			alert("两次密码输入不一致。");
+			return false;
+		} else {
+			return true;
+		}
+	}
+	$("#pwd").blur(function(){
+		if ($("#pwd").val() != $("#pwd2").val()) {
+			$("#div_pwd").removeClass("has-succes");
+			$("#div_pwd2").removeClass("has-succes");
+			$("#div_pwd").addClass("has-error");
+			$("#div_pwd2").addClass("has-error");
+			$("#submits").attr("disabled",true);
+		} else {
+			$("#div_pwd").removeClass("has-error");
+			$("#div_pwd2").removeClass("has-error");
+			$("#div_pwd").addClass("has-succes");
+			$("#div_pwd2").addClass("has-succes");
+			$("#submits").attr("disabled",false);
+		}
+	});
+	$("#pwd2").blur(function(){
+		if ($("#pwd").val() != $("#pwd2").val()) {
+			$("#div_pwd").removeClass("has-success");
+			$("#div_pwd2").removeClass("has-success");
+			$("#div_pwd").addClass("has-error");
+			$("#div_pwd2").addClass("has-error");
+			$("#submits").attr("disabled",true);
+		} else {
+			$("#div_pwd").removeClass("has-error");
+			$("#div_pwd2").removeClass("has-error");
+			$("#div_pwd").addClass("has-success");
+			$("#div_pwd2").addClass("has-success");
+			$("#submits").attr("disabled",false);
+		}
+	});
+</script>
+{inc:footer}

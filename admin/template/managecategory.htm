@@ -1,0 +1,37 @@
+{inc:header}
+<div class="form-group">
+	<a class="btn btn-default" href="?action=category&ctrl=add">+添加</a>
+	<!-- IF[CREATHTML==1] --><a class="btn btn-default" href="?action=category&ctrl=createhtml">生成栏目静态</a><!-- end -->
+	<a class="btn btn-default" href="?action=category&ctrl=updateurl" onclick="return confirm('确认重置URL？本操作将根据设定的url规则重新生成url')">重置URL</a>
+	<a class="btn btn-default" href="?action=category&ctrl=createcache">生成栏目缓存</a>
+</div>
+<table class="table table-bordered">
+	<tr>
+		<th width="60">ID</th>
+		<th width="60">排序</th>
+		<th width="120">栏目</th>
+		<th>介绍</th>
+		<th width="60">状态</th>
+		<th width="140">操作</th>
+	</tr>
+	<!-- $list AS $atl -->
+	<tr onmouseover="this.style.backgroundColor='#F4F4F4'" onmouseout="this.style.backgroundColor=''">
+		<td>{$atl['id']}</td>
+		<td>{$atl['orders']}</td>
+		<td><a href="?action=category&id={$atl['id']}&ctrl=edit">{$atl['name']}</a></td>
+		<td>{$atl['intro']}</td>
+		<td>{run:}echo Base::catstatus($atl['status']);{/run}</td>
+		<td>
+			<a href="?action=cms&ctrl=lists&cat={$atl['id']}">文章</a>&nbsp;&nbsp;&nbsp;
+			<a href="?action=category&id={$atl['id']}&ctrl=edit">编辑</a>&nbsp;&nbsp;&nbsp;
+			<a href="?action=category&id={$atl['id']}&ctrl=del" onclick="return confirm('确认删除')">删除</a>
+		</td>
+	</tr>
+	<!-- END -->
+</table>
+
+<!-- 用于判断提示检测的方法$_i==0 --> 
+<!-- IF[$_i==0] -->
+<div style="clear:both;">抱歉，没有栏目，请先添加!</div>
+<!-- END --> 
+{inc:footer}

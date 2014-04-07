@@ -1,0 +1,45 @@
+{inc:header}
+<div class="page">
+    <div class="main">
+        <!-- $articles AS $atl -->
+        <div class="box1">
+            <?php if($atl['name']!='') {?>
+            <div class="box1_title">
+                <h1>                   
+                    <a title="<?php ;echo $atl['name']; ?>" href="<?php ;echo $atl['staticurl']; ?>" target="_blank"><?php ;echo $atl['name']; ?></a>
+                </h1>
+            </div>
+            <?php } else { ?>
+            <div class="h20"></div>
+            <?php } ?>
+            <div class="box1_content">
+                <?php if(!$atl['orders']){ ?>
+                <?php ;echo Base::cutStr($atl['content'],360); ?>
+                <?php ;} ?>
+            </div>
+            <div class="box1_info">
+            	<span style="float: right"><a href="<?php ;echo $atl['staticurl']; ?>#uyan_frame" target="_blank">回复</a></span>
+            	<span style="float: right"><a href="<?php ;echo $atl['staticurl']; ?>" target="_blank">查看全文</a></span>
+                <span>阅读：<?php echo $atl['views']; ?></span>
+                <span>By：Trlanfeng</span>
+                <span>分类：<a href="<?php ;echo $cats[$atl['cat']]['staticurl']; ?>"><?php ;echo $cats[$atl['cat']]['name']; ?></a></span>
+                <span>Tag：<?php ;$tagarray=explode(',',$atl['tags']);; ?>
+                    <?php $_i=0;if(is_array($tagarray))foreach($tagarray AS $tag){$_i++; ?>
+                    <a href="/?tag=<?php ;echo urlencode($tag);; ?>"><?php ;echo $tag; ?></a>
+                    <?php ;} ?>
+                </span>
+            </div>
+        </div>
+        <!-- END -->
+        <!-- IF[$_i==0] -->  
+		<div class="box1"><div class="box1_title"><h1>抱歉，当前栏目没有文章！</h1></div></div>  
+		<!-- END --> 
+        <div class="navigation">
+            <?php if($page!=0){ ?><div class="floatLeft"><a href="<?php echo $weburl.$path; ?>&p=<?php echo $uppage; ?>">&laquo; 上一页</a></div><?php } ?>
+            <?php if($downpage!=$page){ ?><div class="floatRight"><a href="<?php echo $weburl.$path; ?>&p=<?php echo $downpage; ?>">下一页 &raquo;</a></div><?php } ?>
+        </div>
+    </div>
+    {inc:sidebar}
+    <div class="clear"></div>
+</div>
+{inc:footer}

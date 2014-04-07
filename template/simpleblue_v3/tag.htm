@@ -1,0 +1,53 @@
+{inc:header}
+<div class="blog">
+    <div class="main list">
+        <!-- $articles AS $atl -->
+        <section class="box">
+            <div class="title">
+                <h2>                   
+                    <a title="{$atl['name']}" href="{$atl['staticurl']}" target="_blank">{$atl['name']}</a>
+                </h2>
+            </div>
+            <article class="content">
+                <!-- if(!$atl['orders']) -->
+                {run:}echo Base::cutStr($atl['content'],260);{/run}...
+                <!-- end -->
+            </article>
+            <div class="info">
+                <span style="float: right"><a href="{$atl['staticurl']}#uyan_frame" target="_blank">回复</a></span>
+                <span style="float: right"><a href="{$atl['staticurl']}" target="_blank">查看全文</a></span>
+                <span>阅读：{$atl['views']}</span>
+                <span>分类：<a href="{$cats[$atl['cat']]['staticurl']}">{$cats[$atl['cat']]['name']}</a></span>
+                <span>Tag：
+                    {run:}$tagarray=explode(',',$atl['tags']);{/run}
+                    <!-- $tagarray AS $tag -->
+                    <a href="/?tag={run:}echo urlencode($tag);{/run}">{$tag}</a>
+                    <!-- end -->
+                </span>
+            </div>
+        </section>
+        <!-- END -->
+        <!-- IF[$_i==0] -->  
+        <section class="box1"><div class="box1_title"><h1>抱歉，当前栏目没有文章！</h1></div></section>  
+        <!-- END -->
+        <!-- IF[$_i!=0] -->
+        <ul class=" pagination pagination-blue">
+            <a <!-- if(($page==0) || ($page==1)) -->disabled<!-- end --> class="pure-button" <!-- if(($page!=0) && ($page!=1)) -->href="/index.php?p={$uppage}"<!-- end --> >&laquo;</a>
+            <!-- for($i=1;$i<$pagenum;$i++) -->
+            <a id="page{$i}" href="/index.php?p={$i}">{$i}</a>
+            <!-- end -->
+            <a <!-- if($downpage==$page) -->disabled<!-- end --> class="pure-button" <!-- if($downpage!=$page) -->href="/index.php?p={$downpage}"<!-- end -->>&raquo;</a>
+        </ul>
+        <script>
+            thispage = "{$_GET['p']}";
+            if(thispage == "0" || thispage == "") {thispage = "1"}
+            $(function(){
+                $("#page"+thispage).addClass("active");
+            });
+        </script>
+        <!-- END -->
+    </div>
+    {inc:blogside}
+    <div class="clear"></div>
+</div>
+{inc:footer}

@@ -1,0 +1,48 @@
+{inc:header}
+<form action="admin.php" method="post">
+	<div class="form-group">
+		<label>用户名:</label>
+		<input class="form-control" name="name" type="text" id="name"  value="{$o['name']}" />
+	</div>
+	<div class="form-group">
+		<label>密码:</label>
+		<input class="form-control" name="passwd" type="password" id="passwd" value="{$o['passwd']}" />
+	</div>
+	<div class="form-group">
+		<label>权限:</label><br/>
+		<select class="my-form-control" name="auth_level" id="auth_level" onchange="if(this.value=='admincat'){$track('auth_cat').style.display='inline';}else{$track('auth_cat').style.display='none';}">
+			<!-- $admins AS $k=>$v -->
+			<option value="{$k}">{$v}</option>
+			<!-- END -->
+		</select>
+		<SELECT class="my-form-control"  name="auth_cat" id="auth_cat">
+			<option value="">未分组</option>
+			<!-- $category AS $atl -->
+			<option value="{$atl['id']}" >{$atl['name']}</option>
+			<!-- END -->
+		</SELECT>
+	</div>
+	<div class="form-group">
+		<label>状态:</label>
+		<SELECT class="form-control"  name="status" id="status">
+			<option value="0" >禁用</option>
+			<option value="1" selected >启用</option>
+		</SELECT>
+	</div>
+	<div class="form-group">
+		<input name="action" type="hidden" value="admin" />
+		<input name="id" type="hidden" value="{$o['id']}" />
+		<input name="ctrl" type="hidden" value="{$sgoctrl}" />
+		<input class="btn btn-primary" type="submit" name="Submit" id="submits" value="提交" />
+	</div>
+</form>
+<script>
+SelectItemByValue($track('status'),{$o['status']});
+
+if({$o['auth_cat']}){
+$track('auth_cat').style.display='inline';
+}
+SelectItemByValue($track('auth_level'),'{$o['auth_level']}');
+SelectItemByValue($track('auth_cat'),'{$o['auth_cat']}');
+</script> 
+{inc:footer}
