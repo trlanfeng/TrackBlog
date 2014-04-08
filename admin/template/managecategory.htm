@@ -8,19 +8,21 @@
 <table class="table table-bordered">
 	<tr>
 		<th width="60">ID</th>
-		<th width="60">排序</th>
+        <th width="60">父ID</th>
 		<th width="120">栏目</th>
 		<th>介绍</th>
 		<th width="60">状态</th>
+        <th width="60">排序</th>
 		<th width="140">操作</th>
 	</tr>
 	<!-- $list AS $atl -->
 	<tr onmouseover="this.style.backgroundColor='#F4F4F4'" onmouseout="this.style.backgroundColor=''">
 		<td>{$atl['id']}</td>
-		<td>{$atl['orders']}</td>
+        <td>{$atl['fid']}</td>
 		<td><a href="?action=category&id={$atl['id']}&ctrl=edit">{$atl['name']}</a></td>
 		<td>{$atl['intro']}</td>
 		<td>{run:}echo Base::catstatus($atl['status']);{/run}</td>
+        <td>{$atl['orders']}</td>
 		<td>
 			<a href="?action=cms&ctrl=lists&cat={$atl['id']}">文章</a>&nbsp;&nbsp;&nbsp;
 			<a href="?action=category&id={$atl['id']}&ctrl=edit">编辑</a>&nbsp;&nbsp;&nbsp;
