@@ -20,11 +20,23 @@
 		<label class="control-label">上级栏目：</label>
 		<SELECT class="form-control"  name="fid" id="fid">
 			<option value="">未分组</option>
-			<!-- $category AS $atl --> 
-			<option value="{$atl['id']}"  <!-- if($atl['id']==$o['fid']) -->selected<!-- end --> >{$atl['name']}
-					
-			</option>
-			<!-- END -->
+            <?php $dbit=new Dbclass(SYS_ROOT.DB_NAME); ?>
+            <!-- list:category|status=1 and fid=''|20|orders ASC-->
+            <option value="{$list['id']}"  <!-- if($list['id']==$o['fid']) -->selected<!-- end --> >{$list['name']}</option>
+            <?php
+                $fid = $list['id'];
+                $pre = '';
+                $db=new Dbclass(SYS_ROOT.DB_NAME);
+                $cat_child = $db->getlist(TB.'category','fid = '.$fid,'*');
+                while (!empty($cat_child)) {
+            ?>
+            <!-- $cat_child as $row -->
+            <?php $pre .= '─'; ?>
+            <option value="{$row['id']}"  <!-- if($row['id']==$o['fid']) -->selected<!-- end --> >{$pre}&nbsp;{$row['name']}</option>
+            <!-- end -->
+            <?php $cat_child = $db->getlist(TB.'category','fid = '.$row['id'],'*'); ?>
+            <?php } ?>
+            <!-- END -->
 		</SELECT>
 	</div>
 	<div class="form-group">
