@@ -1,5 +1,5 @@
 <?php
 $articleData=array (
-  'count' => '75',
+  'count' => '1',
 );
 ?>
