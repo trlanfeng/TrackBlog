@@ -32,7 +32,7 @@
             ?>
             <!-- $cat_child as $row -->
             <?php $pre .= '─'; ?>
-            <option value="{$row['id']}"  <!-- if($row['id']==$o['fid']) -->selected<!-- end --> >{$pre}&nbsp;{$row['name']}</option>
+            <option value="{$row['id']}"  <!-- if($row['id']==$o['fid']) -->selected<!-- end --> >{$pre} {$row['name']}</option>
             <!-- end -->
             <?php $cat_child = $db->getlist(TB.'category','fid = '.$row['id'],'*'); ?>
             <?php } ?>
