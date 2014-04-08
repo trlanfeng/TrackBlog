@@ -148,7 +148,7 @@ class Upload{
 			//将文件上传至BAE云存储
             $old_file = SYS_ROOT.$attach_dir.$filename;
             $new_file = '/'.$attach_dir.$filename;
-            require_once 'bcs.class.php';
+            require_once $_SERVER['DOCUMENT_ROOT'].'/sdk/bcs/bcs.class.php';
             $host = BCS_HOST;
             $ak = BCS_AK;
             $sk = BCS_SK;
@@ -173,7 +173,7 @@ class Upload{
             //将文件上传至百度BCS存储
             $old_file = SYS_ROOT.$attach_dir.$filename;
             $new_file = '/'.$attach_dir.$filename;
-            require_once 'bcs.class.php';
+            require_once $_SERVER['DOCUMENT_ROOT'].'/sdk/bcs/bcs.class.php';
             $host = BCS_HOST;
             $ak = BCS_AK;
             $sk = BCS_SK;

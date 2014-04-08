@@ -106,7 +106,7 @@ class Uploader
                 $this->stateInfo = $this->getStateInfo( "MOVE" );
             }
             //将文件上传至百度BCS存储
-            require_once './bcs.class.php';
+            require_once $_SERVER['DOCUMENT_ROOT'].'/sdk/bcs/bcs.class.php';
             $host = BCS_HOST;
             $ak = BCS_AK;
             $sk = BCS_SK;
