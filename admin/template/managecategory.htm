@@ -7,28 +7,44 @@
 </div>
 <table class="table table-bordered">
 	<tr>
-		<th width="60">ID</th>
-        <th width="60">FID</th>
 		<th width="120">栏目</th>
 		<th>介绍</th>
 		<th width="60">状态</th>
         <th width="60">排序</th>
+        <th width="60">ID</th>
+        <th width="60">FID</th>
 		<th width="140">操作</th>
 	</tr>
-	<!-- $list AS $atl -->
+    <!-- list:category|status=1 and fid=''|20|orders ASC-->
 	<tr onmouseover="this.style.backgroundColor='#F4F4F4'" onmouseout="this.style.backgroundColor=''">
-		<td>{$atl['id']}</td>
-        <td>{$atl['fid']}</td>
-		<td><a href="?action=category&id={$atl['id']}&ctrl=edit">{$atl['name']}</a></td>
-		<td>{$atl['intro']}</td>
-		<td>{run:}echo Base::catstatus($atl['status']);{/run}</td>
-        <td>{$atl['orders']}</td>
+		<td><a href="{$list['staticurl']}">{$list['name']}</a></td>
+		<td>{$list['intro']}</td>
+		<td>{run:}echo Base::catstatus($list['status']);{/run}</td>
+        <td>{$list['orders']}</td>
+        <td>{$list['id']}</td>
+        <td>{$list['fid']}</td>
 		<td>
-			<a href="?action=cms&ctrl=lists&cat={$atl['id']}">文章</a>&nbsp;&nbsp;&nbsp;
-			<a href="?action=category&id={$atl['id']}&ctrl=edit">编辑</a>&nbsp;&nbsp;&nbsp;
-			<a href="?action=category&id={$atl['id']}&ctrl=del" onclick="return confirm('确认删除')">删除</a>
+			<a href="?action=cms&ctrl=lists&cat={$list['id']}">文章</a>&nbsp;&nbsp;&nbsp;
+			<a href="?action=category&id={$list['id']}&ctrl=edit">编辑</a>&nbsp;&nbsp;&nbsp;
+			<a href="?action=category&id={$list['id']}&ctrl=del" onclick="return confirm('确认删除')">删除</a>
 		</td>
 	</tr>
+        {run:}$fid = (int)$list['id'];{/run}
+        <!-- listc:category|status=1 and fid=$fid|20|orders ASC-->
+        <tr onmouseover="this.style.backgroundColor='#F4F4F4'" onmouseout="this.style.backgroundColor=''">
+            <td>├─ <a href="{$listc['staticurl']}">{$listc['name']}</a></td>
+            <td>{$listc['intro']}</td>
+            <td>{run:}echo Base::catstatus($listc['status']);{/run}</td>
+            <td>{$listc['orders']}</td>
+            <td>{$listc['id']}</td>
+            <td>{$listc['fid']}</td>
+            <td>
+                <a href="?action=cms&ctrl=lists&cat={$listc['id']}">文章</a>&nbsp;&nbsp;&nbsp;
+                <a href="?action=category&id={$listc['id']}&ctrl=edit">编辑</a>&nbsp;&nbsp;&nbsp;
+                <a href="?action=category&id={$listc['id']}&ctrl=del" onclick="return confirm('确认删除')">删除</a>
+            </td>
+        </tr>
+        <!-- END -->
 	<!-- END -->
 </table>
 
