@@ -107,7 +107,6 @@ class Uploader
             }
             //将文件上传至百度BCS存储
             require_once './bcs.class.php';
-            require_once './conf.inc.php';
             $host = BCS_HOST;
             $ak = BCS_AK;
             $sk = BCS_SK;

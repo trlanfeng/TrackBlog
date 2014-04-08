@@ -1,10 +1,10 @@
 <?php
 define ( 'BCS_HOST', 'bcs.duapp.com' );
-define ( 'BCS_BUCKET', 'jihuola' );
+define ( 'BCS_BUCKET', '' );
 //AK 公钥
-define ( 'BCS_AK', '4c43a49a0075d9d45db02f1f171faa2f' );
+define ( 'BCS_AK', '' );
 //SK 私钥
-define ( 'BCS_SK', '13813339d5e9ea54d0664debf47110d3' );
+define ( 'BCS_SK', '' );
 //superfile 每个object分片后缀
 define ( 'BCS_SUPERFILE_POSTFIX', '_bcs_superfile_' );
 //sdk superfile分片大小 ，单位 B（字节）
