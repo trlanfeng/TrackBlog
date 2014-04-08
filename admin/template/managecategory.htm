@@ -17,7 +17,9 @@
 	</tr>
     <!-- list:category|status=1 and fid=''|20|orders ASC-->
 	<tr onmouseover="this.style.backgroundColor='#F4F4F4'" onmouseout="this.style.backgroundColor=''">
-		<td><a href="{$list['staticurl']}">{$list['name']}</a></td>
+		<td>
+            <a href="{$list['staticurl']}">{$list['name']}</a>
+        </td>
 		<td>{$list['intro']}</td>
 		<td>{run:}echo Base::catstatus($list['status']);{/run}</td>
         <td>{$list['orders']}</td>
@@ -29,22 +31,33 @@
 			<a href="?action=category&id={$list['id']}&ctrl=del" onclick="return confirm('确认删除')">删除</a>
 		</td>
 	</tr>
-        {run:}$fid = (int)$list['id'];{/run}
-        <!-- listc:category|status=1 and fid=$fid|20|orders ASC-->
-        <tr onmouseover="this.style.backgroundColor='#F4F4F4'" onmouseout="this.style.backgroundColor=''">
-            <td>├─ <a href="{$listc['staticurl']}">{$listc['name']}</a></td>
-            <td>{$listc['intro']}</td>
-            <td>{run:}echo Base::catstatus($listc['status']);{/run}</td>
-            <td>{$listc['orders']}</td>
-            <td>{$listc['id']}</td>
-            <td>{$listc['fid']}</td>
-            <td>
-                <a href="?action=cms&ctrl=lists&cat={$listc['id']}">文章</a>&nbsp;&nbsp;&nbsp;
-                <a href="?action=category&id={$listc['id']}&ctrl=edit">编辑</a>&nbsp;&nbsp;&nbsp;
-                <a href="?action=category&id={$listc['id']}&ctrl=del" onclick="return confirm('确认删除')">删除</a>
-            </td>
-        </tr>
-        <!-- END -->
+    <?php
+        $fid = $list['id'];
+        $pre = '';
+        $db=new Dbclass(SYS_ROOT.DB_NAME);
+        $cat_child = $db->getlist(TB.'category','fid = '.$fid,'*');
+        while (!empty($cat_child)) {
+    ?>
+    <!-- $cat_child as $row -->
+    <?php $pre .= '─'; ?>
+	<tr onmouseover="this.style.backgroundColor='#F4F4F4'" onmouseout="this.style.backgroundColor=''">
+		<td>
+            {$pre} <a href="{$row['staticurl']}">{$row['name']}</a>
+        </td>
+		<td>{$row['intro']}</td>
+		<td>{run:}echo Base::catstatus($row['status']);{/run}</td>
+        <td>{$row['orders']}</td>
+        <td>{$row['id']}</td>
+        <td>{$row['fid']}</td>
+		<td>
+			<a href="?action=cms&ctrl=lists&cat={$row['id']}">文章</a>&nbsp;&nbsp;&nbsp;
+			<a href="?action=category&id={$row['id']}&ctrl=edit">编辑</a>&nbsp;&nbsp;&nbsp;
+			<a href="?action=category&id={$row['id']}&ctrl=del" onclick="return confirm('确认删除')">删除</a>
+		</td>
+	</tr>
+    <!-- end -->
+    <?php $cat_child = $db->getlist(TB.'category','fid = '.$row['id'],'*'); ?>
+    <?php } ?>
 	<!-- END -->
 </table>
 
