@@ -146,49 +146,52 @@ class Upload{
 			$err=$storage->errno()==-7?'请在后台申请一个名为TrackCMS的Storage Domain':'';
 		}elseif(RUNONBAE){
 			//将文件上传至BAE云存储
-            $old_file = SYS_ROOT.$attach_dir.$filename;
-            $new_file = '/'.$attach_dir.$filename;
-            require_once $_SERVER['DOCUMENT_ROOT'].'/sdk/bcs/bcs.class.php';
-            $host = BCS_HOST;
-            $ak = BCS_AK;
-            $sk = BCS_SK;
-            $bucket = BCS_BUCKET;
-            $object = $new_file;        //这个是上传后文件的名字
-            $fileUpload = $_FILES['filedata']['tmp_name'];    //这个是需上传的文件的名字
-            $baiduBCS = new BaiduBCS ( $ak, $sk, $host );
-            $response = $baiduBCS->create_object ( $bucket, $object, $fileUpload );
-            if (! $response->isOK ()) {
-                die ( "文件上传失败！" );
-            }
-            $bcs_url = $baiduBCS->generate_get_object_url($bucket, $object, $opt = array());
-            $msg = $bcs_url;
+                        $old_file = SYS_ROOT.$attach_dir.$filename;
+                        $new_file = '/'.$attach_dir.$filename;
+                        require_once $_SERVER['DOCUMENT_ROOT'].'/sdk/bcs/bcs.class.php';
+                        $host = BCS_HOST;
+                        $ak = BCS_AK;
+                        $sk = BCS_SK;
+                        $bucket = BCS_BUCKET;
+                        $object = $new_file;        //这个是上传后文件的名字
+                        $fileUpload = $_FILES['filedata']['tmp_name'];    //这个是需上传的文件的名字
+                        $baiduBCS = new BaiduBCS ( $ak, $sk, $host );
+                        $response = $baiduBCS->create_object ( $bucket, $object, $fileUpload );
+                        if (! $response->isOK ()) {
+                            die ( "文件上传失败！" );
+                        }
+                        $bcs_url = $baiduBCS->generate_get_object_url($bucket, $object, $opt = array());
+                        $msg = $bcs_url;
 		}else{
-			File::trackmkdir(SYS_ROOT.$attach_dir);
-			if($filebinary==null){
-				$status=move_uploaded_file($tempFilePath,SYS_ROOT.$attach_dir.$filename);
-			}else{
-				file_put_contents(SYS_ROOT.$attach_dir.$filename,$filebinary);
-				$status = file_exists(SYS_ROOT.$attach_dir.$filename);
-			}
-            //将文件上传至百度BCS存储
-            $old_file = SYS_ROOT.$attach_dir.$filename;
-            $new_file = '/'.$attach_dir.$filename;
-            require_once $_SERVER['DOCUMENT_ROOT'].'/sdk/bcs/bcs.class.php';
-            $host = BCS_HOST;
-            $ak = BCS_AK;
-            $sk = BCS_SK;
-            $bucket = BCS_BUCKET;
-            $object = $new_file;        //这个是上传后文件的名字
-            $fileUpload = $old_file;    //这个是需上传的文件的名字
-            $baiduBCS = new BaiduBCS ( $ak, $sk, $host );
-            $response = $baiduBCS->create_object ( $bucket, $object, $fileUpload );
-            if (! $response->isOK ()) {
-                die ( "文件上传失败！" );
-            }
-            $bcs_url = $baiduBCS->generate_get_object_url($bucket, $object, $opt = array());
-            //返回百度BCS的URL访问地址
-            $msg = $bcs_url;
-			//$msg = $urldir.$attach_dir.$filename;
+                    if(BCS_CHECK) {
+                        //将文件上传至百度BCS存储
+                        $old_file = $tempFilePath;
+                        $new_file = '/'.$attach_dir.$filename;
+                        require_once $_SERVER['DOCUMENT_ROOT'].'/sdk/bcs/bcs.class.php';
+                        $host = BCS_HOST;
+                        $ak = BCS_AK;
+                        $sk = BCS_SK;
+                        $bucket = BCS_BUCKET;
+                        $object = $new_file;        //这个是上传后文件的名字
+                        $fileUpload = $old_file;    //这个是需上传的文件的名字
+                        $baiduBCS = new BaiduBCS ( $ak, $sk, $host );
+                        $response = $baiduBCS->create_object ( $bucket, $object, $fileUpload );
+                        if (! $response->isOK ()) {
+                            die ( "文件上传失败！" );
+                        }
+                        $bcs_url = $baiduBCS->generate_get_object_url($bucket, $object, $opt = array());
+                        //返回百度BCS的URL访问地址
+                        $msg = $bcs_url;
+                    } else {
+                        File::trackmkdir(SYS_ROOT.$attach_dir);
+                        if($filebinary==null){
+                                $status=move_uploaded_file($tempFilePath,SYS_ROOT.$attach_dir.$filename);
+                        }else{
+                                file_put_contents(SYS_ROOT.$attach_dir.$filename,$filebinary);
+                                $status = file_exists(SYS_ROOT.$attach_dir.$filename);
+                        }
+                        $msg = $urldir.$attach_dir.$filename;
+                    }
 		}
 		
 		return array('err'=>$err,'msg'=>$msg,'status'=>$status);

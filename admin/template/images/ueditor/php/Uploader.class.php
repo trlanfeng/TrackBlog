@@ -102,21 +102,25 @@ class Uploader
         }
         $this->fullName = $this->getFolder() . '/' . $this->getName();
         if ( $this->stateInfo == $this->stateMap[ 0 ] ) {
-            if ( !move_uploaded_file( $file[ "tmp_name" ] , $this->fullName ) ) {
-                $this->stateInfo = $this->getStateInfo( "MOVE" );
-            }
-            //将文件上传至百度BCS存储
-            require_once $_SERVER['DOCUMENT_ROOT'].'/sdk/bcs/bcs.class.php';
-            $host = BCS_HOST;
-            $ak = BCS_AK;
-            $sk = BCS_SK;
-            $bucket = BCS_BUCKET;
-            $object = '/'.$this->fullName;
-            $fileUpload = $this->fullName;
-            $baiduBCS = new BaiduBCS ( $ak, $sk, $host );
-            $response = $baiduBCS->create_object ( $bucket, $object, $fileUpload );
-            if (! $response->isOK ()) {
-               $this->stateInfo = $this->getStateInfo( "MOVE" );
+            require_once ($_SERVER['DOCUMENT_ROOT'].'/config.php');
+            if (BCS_CHECK){
+                //将文件上传至百度BCS存储
+                require_once $_SERVER['DOCUMENT_ROOT'].'/sdk/bcs/bcs.class.php';
+                $host = BCS_HOST;
+                $ak = BCS_AK;
+                $sk = BCS_SK;
+                $bucket = BCS_BUCKET;
+                $object = '/'.$this->fullName;
+                $fileUpload = $file[ "tmp_name" ];
+                $baiduBCS = new BaiduBCS ( $ak, $sk, $host );
+                $response = $baiduBCS->create_object ( $bucket, $object, $fileUpload );
+                if (! $response->isOK ()) {
+                   $this->stateInfo = $this->getStateInfo( "MOVE" );
+                }
+            } else {
+                if ( !move_uploaded_file( $file[ "tmp_name" ] , $this->fullName ) ) {
+                    $this->stateInfo = $this->getStateInfo( "MOVE" );
+                }
             }
         }
     }

@@ -2,8 +2,7 @@
 if (! defined ( 'BCS_API_PATH' )) {
 	define ( 'BCS_API_PATH', dirname ( __FILE__ ) );
 }
-//require_once (BCS_API_PATH . '/conf.inc.php');
-require_once ('../../config.php');
+require_once ('/../../config.php');
 require_once (BCS_API_PATH . '/requestcore.class.php');
 require_once (BCS_API_PATH . '/mimetypes.class.php');
 /**

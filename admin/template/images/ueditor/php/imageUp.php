@@ -11,6 +11,8 @@
     error_reporting(E_ERROR | E_WARNING);
     date_default_timezone_set("Asia/chongqing");
     include "Uploader.class.php";
+    //引入全局配置文件，用以配置图片上传目录 add by trlanfeng @ 20140411
+    require_once ($_SERVER['DOCUMENT_ROOT'].'/config.php');
     //上传图片框中的描述表单名称，
     $title = htmlspecialchars($_POST['pictitle'], ENT_QUOTES);
     $path = htmlspecialchars($_POST['dir'], ENT_QUOTES);
@@ -45,8 +47,16 @@
         echo '{"state":"\u975e\u6cd5\u4e0a\u4f20\u76ee\u5f55"}';
         return;
     }
-
-    $config[ 'savePath' ] = $path . '/';
+    
+    //根据是否上传BCS来修改上传目录 edit by trlanfeng @ 20140411
+    if (BCS_CHECK){
+        //使用BCS时不添加目录路径参数
+        $config[ 'savePath' ] = $path . '/';
+    } else {
+        //添加目录路径参数，使图片上传至根目录
+        $config[ 'savePath' ] = UEDITOR_IMG_PATH . $path . '/';
+    }
+    
 
     //生成上传实例对象并完成上传
     $up = new Uploader("upfile", $config);
@@ -73,5 +83,13 @@
      *   'state'    :'SUCCESS'  //上传状态，成功时返回SUCCESS,其他任何值将原样返回至图片上传框中
      * }
      */
-    echo "{'url':'" . $info["url"] . "','title':'" . $title . "','original':'" . $info["originalName"] . "','state':'" . $info["state"] . "'}";
+    // 根据不同上传方式返回不同URL edit by trlanfeng @ 20140411 
+    if (BCS_CHECK){
+        //返回百度BCS的URL
+        echo "{'url':'" .'http://'.BCS_HOST.'/'.BCS_BUCKET.'/' .$info["url"] . "','title':'" . $title . "','original':'" . $info["originalName"] . "','state':'" . $info["state"] . "'}";
+    } else {
+        //返回普通URL
+        echo "{'url':'" .UEDITOR_IMG_PATH. $info["url"] . "','title':'" . $title . "','original':'" . $info["originalName"] . "','state':'" . $info["state"] . "'}";
+    }
+    
 
