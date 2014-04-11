@@ -1,23 +1,30 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<title>{addtitle} {webname}</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="{weburl}images/style.css" type="text/css" />
-<script src="{weburl}images/track.js" language="javascript"></script>
-<link rel="icon" type="image/ico" href="{weburl}/favicon.ico" /> 
-<meta name="description" content="<!-- if($id) -->{run:}echo Base::cutStr($atl['content'],360){/run}<!-- END -->{addtitle}{webinfo}{webname}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+    <!-- if($addtitle=='')-->
+    <title>{$webname}</title>
+    <!-- else -->
+    <title>{$addtitle} - {$webname}</title>
+    <!-- end -->
+    <meta name="keywords" content="{$keywords}" />
+    <meta name="description" content="{$description}" />
+    <link rel="stylesheet" href="{CSS}index.css" type="text/css" />
 </head>
-
 <body>
-<div id="trackBody">
-<!--title-->
-<div id="topTitle"><a href="{weburl}" class="basetitle" title="{webname}"><img id="logo" alt="" width="178" height="61" src="{weburl}images/dot.gif" /></a><span>{webinfo}</span></div>
-<!--导航开始-->
-<div id="nav">
-		<li id="home"><a href="{weburl}"  >首页</a></li>
-		 <!-- list:category|status=1|20|orders DESC-->
-  <li class="page_item"><a  href="{weburl}{list['staticurl']}" >{list['name']}</a></li>
-	 <!-- END -->
-		<div class="clear"></div>
-</div>
+    <div id="trackBody">
+        <!--title-->
+        <div id="topTitle">
+            <h1><a href="{$weburl}" class="basetitle" title="{$webname}">{$webname}</a></h1>
+            <p>{$webinfo}</p>
+        </div>
+        
+        <!--导航开始-->
+        <div id="nav">
+            <li id="home"><a href="{$weburl}"  >首页</a></li>
+            <!-- list:category|status=1|20|orders DESC-->
+            <li class="page_item"><a  href="{$weburl}{$list['staticurl']}" >{$list['name']}</a></li>
+            <!-- END -->
+            <div class="clear"></div>
+        </div>

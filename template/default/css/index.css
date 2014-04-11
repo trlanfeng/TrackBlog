@@ -1,0 +1,111 @@
+@charset "utf-8";
+/*---公共定义--*/
+* {margin: 0;padding: 0;font-family: 宋体;}
+h1, h2, h3, h4, h5, h6 {font-weight: normal;}
+img {border: none;}
+a {text-decoration: none;color: #444;}
+a:hover {text-decoration: none;color: #21759b;}
+ul, li {list-style: none;}
+.clear {clear: both;width: 0;height: 0;font-size: 0;}
+.hide {display: none;}
+.textduiqi {text-align: justify;text-justify: inter-ideograph;}
+
+body {background-color: #e6e6e6;padding: 50px 0;}
+#trackBody {
+    box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
+    width: 960px;
+    padding: 0 40px;
+    margin: 0 auto;
+    background-color: white;
+}
+#topTitle {
+    padding: 30px 0 20px;
+}
+#topTitle h1 {
+    font-size: 26px;
+    font-family: "微软雅黑","宋体";
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+#topTitle p {
+    font-size: 14px;
+    line-height: 200%;
+}
+#nav {
+    border: 1px solid #EDEDED;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+    border-left: none;
+    border-right: none;
+    margin-bottom: 20px; 
+}
+#nav li {
+    float: left;
+    margin: 0 10px;
+}
+#bodyLeft {
+    float: left;
+    width: 690px;
+}
+.postList {
+    
+}
+.postList h2 {
+    font-size: 16px;
+    font-weight: bold;
+    height: 30px;
+}
+.postList .listEntry {
+    font-size: 14px;
+    line-height: 160%;
+    color: #777;
+}
+.postList .listDetal {
+    font-size: 12px;
+    line-height: 160%;
+    margin-top: 10px;
+    color: #adadad;
+}
+.postList .listDetal a {
+    color: #adadad;
+}
+.postList .listDetal a:hover {
+    color: #21759b;
+}
+#bodyRight {
+    float: left;
+    width: 250px;
+    margin-left: 20px;
+}
+.sitebarHead {
+    color: #444;
+    font-weight: bold;
+    font-size: 16px;
+    height: 25px;
+}
+.separator {
+    font-size: 14px;
+    line-height: 160%;
+    margin-bottom: 10px;
+    color: #555;
+}
+.sidebarCat {
+    margin-bottom: 10px;
+}
+.submenu {
+    
+}
+.submenu li {
+    font-size: 14px;
+    line-height: 160%;
+}
+#footer {
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+}
+#footer .copy {
+    font-family: "Arial";
+    margin: 0 5px;
+}
