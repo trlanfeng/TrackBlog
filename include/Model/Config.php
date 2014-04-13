@@ -53,11 +53,18 @@ class Config{
 	function update(){
 		is_writable(SYS_ROOT.'config.php')||Base::showmessage('无权限修改配置文件');
 		unset($_POST['Submit']);unset($_POST['ctrl']);unset($_POST['action']);
+        /*
 		$configData="<?php\r\n";
 		foreach($_POST as $key=>$configs){
 			$configData.="define('".$key."',	'".Base::safeword($configs)."');\r\n";
 		}
 		$configData.="?>";
+         */
+        //修改原来重新写文件的方式为正则替换 by trlanfeng @ 2014.04.13
+        $configData = file_get_contents(SYS_ROOT.'config.php');
+        foreach($_POST as $k=>$v){
+            $configData = preg_replace("#[^//]define\('{$k}','.*?'\)#","define('{$k}','{$v}')",$configData);
+        }
 		$status=file_put_contents(SYS_ROOT."config.php",$configData);
 		Base::execmsg("保存设置","?action=".$this->table.'&ctrl=display',TRUE);
 	}
