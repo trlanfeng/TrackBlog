@@ -66,7 +66,12 @@ class Cms extends Article {
 		$this->createurl($this->data);
 		$this->save2memcache();
 		$this->countcache();
-		Base::execmsg("修改","?action=".$this->table.'&ctrl=lists',$status);
+                //文章修改完毕后自动进行生成静态操作 by trlanfeng @ 2014.04.16
+                if(CREATHTML==0){
+                    Base::execmsg("修改","?action=".$this->table.'&ctrl=lists',$status);
+		} else {
+                    Base::execmsg("修改","../index.php?id=".$this->data['id']."&createprocess=1&single=1",$status);
+                }
 	}
 	function del($wheres=''){
 		$status=$this->db->delist(TB.$this->table,$this->id,$wheres);
