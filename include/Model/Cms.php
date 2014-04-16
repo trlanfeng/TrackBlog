@@ -18,7 +18,12 @@ class Cms extends Article {
 		$this->createurl($this->data);
 		$this->save2memcache();
 		$this->countcache();
-		Base::execmsg("添加","?action=".$this->table.'&ctrl=lists',$status);
+                //文章添加完毕后自动进行生成静态操作 by trlanfeng @ 2014.04.16
+                if(CREATHTML==0){
+                    Base::execmsg("添加","?action=".$this->table.'&ctrl=lists',$status);
+		} else {
+                    Base::execmsg("添加","../index.php?id=".$this->data['id']."&createprocess=1&single=1",$status);
+                }
 	}
 	function saveremotepic( $content )
 	{
