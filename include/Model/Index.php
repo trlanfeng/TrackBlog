@@ -178,11 +178,11 @@ class Index{
 			File::trackmkdir(SYS_ROOT.dirname($path), 0777);
 			file_put_contents(SYS_ROOT.self::$cfile,self::$data);
 		}
-		if($single)Base::showmessage('生成'.$nowtitle.'成功');
+		if($single)Base::showmessage('生成'.$nowtitle.'成功',ADMINDIR.'admin.php?action=cms&ctrl=lists');
 		if($nextid){
 			Base::showmessage('生成'.$nowtitle.'ID('.$$nowvar.')','index.php?createprocess=1&'.$nowvar.'='.$nextid,1);
 		}else{
-			Base::showmessage('生成'.$nowtitle.'成功','admin/admin.php?action=frame&ctrl=main');
+			Base::showmessage('生成'.$nowtitle.'成功',ADMINDIR.'admin.php?action=frame&ctrl=main');
 		}
 	}
 }
