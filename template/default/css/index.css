@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*---公共定义--*/
-* {margin: 0;padding: 0;font-family: 宋体;}
+* {margin: 0;padding: 0;font-family: "微软雅黑","宋体";}
 h1, h2, h3, h4, h5, h6 {font-weight: normal;}
 img {border: none;}
 a {text-decoration: none;color: #444;}
@@ -23,7 +23,6 @@ body {background-color: #e6e6e6;padding: 50px 0;}
 }
 #topTitle h1 {
     font-size: 26px;
-    font-family: "微软雅黑","宋体";
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -73,6 +72,37 @@ body {background-color: #e6e6e6;padding: 50px 0;}
 .postList .listDetal a:hover {
     color: #21759b;
 }
+#post .arttitle {
+    height: 50px;
+    line-height: 40px;
+}
+#post #content {
+    font-size: 14px;
+    line-height: 200%;
+}
+#post #postDetal {
+    height: 30px;
+    line-height: 30px;
+    margin: 10px 0;
+}
+#post #postDetal p {
+    font-size: 12px;
+    font-family: "宋体" !important;
+    color: #999;
+}
+#post #postDetal p a {
+    font-size: 12px;
+    font-family: "宋体" !important;
+    color: #999;
+}
+.npPost {
+    margin-bottom: 10px;
+}
+.npPost p {
+    height: 25px;
+    line-height: 25px;
+    font-size: 14px;
+}
 #bodyRight {
     float: left;
     width: 250px;
@@ -91,7 +121,7 @@ body {background-color: #e6e6e6;padding: 50px 0;}
     color: #555;
 }
 .sidebarCat {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 .submenu {
     
