@@ -1,12 +1,12 @@
 <?php
-define('WEBNAME','TrackCMS421311111');
+define('WEBNAME','TrackCMS');
 define('WEBURL','./');
 define('WEBINFO','TrackCMS');
 define('ANNOUNCE','TrackCMS');
 define('ADMINDIR','admin/');
 define('TIMEMOD','0');
 define('EACHPAGE','10');
-define('TRACKEDITOR','2');
+define('TRACKEDITOR','1');
 define('EDITORHL','1');
 define('TRACKDEBUG','1');
 define('SYS_ROOT',	str_replace("\\", '/',dirname(__FILE__))."/");
