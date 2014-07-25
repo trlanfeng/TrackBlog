@@ -18,7 +18,7 @@ define('INC',	'include/');
 define('DB',	'Sqlite');
 define('DB_NAME',	'data/blog.db');
 define('MEMCACHE',	'');
-define('TB',	'cms_');
+define('TB',	'tc_');
 define('CREATHTML',	'0');
 define('VIEWSCOUNT',	'1');
 define('CATURL',	'/?cat={catname}');

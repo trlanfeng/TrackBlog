@@ -1,6 +1,6 @@
 *{margin:0; padding:0;}
 /*框架*/
-html,body {height: 100%;}
+/*html,body {height: 100%;}*/
 .header {height: 40px;border-bottom: 1px solid #1f262d;background-color: #2E363F;color:white;line-height: 40px;font-size: 16px;font-weight: bold;padding-left: 30px;}
 .box {border-spacing: 0;border: none;width: 100%;min-height: 100%;}
 .box .menu,.box .main {vertical-align: top;}
