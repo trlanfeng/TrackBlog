@@ -1,4 +1,5 @@
 {inc:header}
+<p class="tips-warning" id="tips"></p>
 <form action="admin.php" method="post" class="form-horizontal">
 	<table class="table table-bordered">
 	<tr>
@@ -184,20 +185,18 @@ SelectItemByValue($track('EDITORHL'),{$editorhl});
 SelectItemByValue($track('VIEWSCOUNT'),{$viewscount});
 SelectItemByValue($track('DB'),'{$db}');
 {run:}
-
-if( RUNONSAE ||RUNONBAE )
-	{
-	echo '
-	alert("在SAE/BAE环境下，无法修改配置，请手动修改config.php");
-	';
-	
-	}
+if( RUNONSAE ||RUNONBAE ) {
+    echo '
+    $("#tips").html("在SAE/BAE环境下，无法修改配置，请手动修改config.php");
+    $("#tips").show();
+    ';
+}
 {/run}
 
 if($track('WEBURL').value=='./'){
-	alert('请设置网站地址！');
-	$track('WEBURL').focus();
-	
+    $("#tips").html("请设置网站地址！");
+    $("#tips").show();
+    $track('WEBURL').focus();
 }
 </script> 
 {inc:footer}
