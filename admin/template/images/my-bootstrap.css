@@ -95,3 +95,9 @@ fieldset[disabled] .my-form-control {
 textarea.my-form-control {
   height: auto;
 }
+.tips-warning {
+    padding: 10px 20px;
+    line-height: 180%;
+    background-color: #FCF8E3;
+    border: 1px solid #FFF1A7;
+}
