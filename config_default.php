@@ -1,6 +1,5 @@
 <?php
 define('WEBNAME',	'TrackCMS');
-//默认值：define('WEBURL',	'./');
 define('WEBURL',	'./');
 define('WEBINFO',	'TrackCMS');
 define('ANNOUNCE',	'TrackCMS');
@@ -10,7 +9,6 @@ define('EACHPAGE',	'10');
 define('TRACKEDITOR',	'2');
 define('EDITORHL',	'1');
 define('TRACKDEBUG',	'1');
-//默认值：define('SYS_ROOT',	str_replace("\\", '/',dirname(__FILE__))."/");
 define('SYS_ROOT',	str_replace("\\", '/',dirname(__FILE__))."/");
 define('CACHE',	'data/');
 define('CACHELAST',	'1');
@@ -18,7 +16,7 @@ define('INC',	'include/');
 define('DB',	'Sqlite');
 define('DB_NAME',	'data/blog.db');
 define('MEMCACHE',	'');
-define('TB',	'cms_');
+define('TB',	'tc_');
 define('CREATHTML',	'0');
 define('VIEWSCOUNT',	'1');
 define('CATURL',	'/?cat={catname}');
