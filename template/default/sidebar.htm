@@ -1,7 +1,9 @@
 <div id="bodyRight">
     <!-- notice  begin -->
-    <h3 class="sitebarHead">公告</h3>
-    <div class="separator">{$announce}</div>
+    <div class="sidebarCat">
+        <h3 class="sitebarHead">公告</h3>
+        <div class="separator">{$announce}</div>
+    </div>
     <!-- notice  end -->
 
 
@@ -11,7 +13,7 @@
         <ul class="submenu">
             <!-- list:comment|status=1|4|-->
             <!-- listURL:cms|id=$list[article_id]|1-->
-            <li class="cat-item" ><a href="{$weburl}{$listURL['staticurl']}">{$list['name']}:{$list['content']}</a></li>
+            <li class="cat-item" ><cite></cite><a href="{$weburl}{$listURL['staticurl']}">{$list['name']}:{$list['content']}</a></li>
             <!-- END -->
             <!-- END -->
         </ul>
@@ -23,9 +25,9 @@
         <h3 class="sitebarHead">随机日记</h3>
         <ul class="submenu">	
             <!-- list:cms|status=1|4|RANDOM ()-->
-            <li><a  href="{$weburl}{$list['staticurl']}">{$list['name']}</a></li>
+            <li><cite></cite><a href="{$weburl}{$list['staticurl']}">{$list['name']}</a></li>
             <!-- END -->
-
+            <li><cite></cite><a href="./?id=1">你的第一个小脚印出现在这里哦</a></li>
         </ul>
     </div>
     <!-- END -->
@@ -35,7 +37,7 @@
         <h3 class="sitebarHead">热门排行</h3>
         <ul class="submenu">
             <!-- list:cms|status=1|5|views DESC-->
-            <li><a  href="{$weburl}{$list['staticurl']}">{$list['name']}</a></li>
+            <li><cite></cite><a  href="{$weburl}{$list['staticurl']}">{$list['name']}</a></li>
             <!-- END -->
 
         </ul>
@@ -57,7 +59,7 @@
         <h3 class="sitebarHead">文章分类</h3>
         <ul class="submenu">
             <!-- list:category|status=1|20|id DESC-->
-            <li class="cat-item" ><a  href="{$weburl}{$list['staticurl']}" >{$list['name']}</a></li>
+            <li class="cat-item" ><cite></cite><a  href="{$weburl}{$list['staticurl']}" >{$list['name']}</a></li>
             <!-- END -->
 
         </ul>
@@ -68,7 +70,7 @@
         <h3 class="sitebarHead">友情链接</h3>
         <ul class="submenu">
             <!-- list:link|status=1|20|id DESC-->
-            <li class="cat-item" ><a href="{$list['urls']}" title="{$list['content']}" target="_blank">{$list['name']}</a></li>
+            <li class="cat-item" ><cite></cite><a href="{$list['urls']}" title="{$list['content']}" target="_blank">{$list['name']}</a></li>
             <!-- END --> 
 
         </ul>

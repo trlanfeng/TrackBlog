@@ -3,12 +3,14 @@
     <!--循环开始-->
     <!-- $articles AS $atl -->
     <div class="postList" id="post-{$atl['id']}">
-        <h2><!-- IF[$atl['orders']] -->[置顶]<!-- END --><a  rel="bookmark" title="Permanent Link to  {$atl['name']}" href="{$atl['staticurl']}">{$atl['name']}</a></h2>
+        <h2><!-- IF[$atl['orders']] -->[置顶]<!-- END --><a title="{$atl['name']}" href="{$atl['staticurl']}">{$atl['name']}</a></h2>
         <!-- IF[!$atl['orders']] --><div class="listEntry">{run:}echo Base::cutStr($atl['content'],360){/run}</div><!-- END -->
-        <div class="listDetal">发布时间:<span class="listDate">{run:}echo date("Y-m-d",$atl['times']);{/run}</span> | 
-            {run:}$dispcat=$cats[$atl['cat']];{/run}
-            类别:<a href="{$cats[$atl['cat']]['staticurl']}">{$cats[$atl['cat']]['name']}</a> | 阅读:{$atl['views']} | 评论:{$atl['cmtcount']} |
-            标签:{run:}$tagarray=explode(',',$atl['tags']);{/run}<!-- $tagarray AS $tag --><a href="{weburl}?tag={run:}echo urlencode($tag);{/run}">{tag}</a> <!-- END --> 
+        <div class="listDetal">
+            发布时间：{run:}echo date("Y-m-d",$atl['times']);{/run}<span></span>
+            类别：<a href="{$cats[$atl['cat']]['staticurl']}">{$cats[$atl['cat']]['name']}</a><span></span>
+            阅读：{$atl['views']}<span></span>
+            评论：{$atl['cmtcount']}<span></span>
+            标签：{run:}$tagarray=explode(',',$atl['tags']);{/run}<!-- $tagarray AS $tag --><a href="{weburl}?tag={run:}echo urlencode($tag);{/run}">{tag}</a> <!-- END --> 
         </div>
     </div>
     <!-- END -->  
