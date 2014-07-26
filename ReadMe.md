@@ -27,4 +27,4 @@
 
 -------------------------------------------------------
 
-此项目衍生于 taocms(by taogogo) 。
+此项目衍生于 taocms ( by taogogo ) 项目地址：http://www.taocms.org
