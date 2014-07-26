@@ -1,4 +1,9 @@
 <?php
+    if (!isset($_SERVER["HTTP_REFERER"])) {
+        header("Location: index.php");
+    }
+?>
+<?php
 if ($_POST) {
     include "../config.php";
     include SYS_ROOT . INC . 'Model/Base.php';
