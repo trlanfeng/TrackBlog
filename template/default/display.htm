@@ -4,13 +4,15 @@
     <!--正文开始-->
     <div id="post">
         <h2 class="arttitle"><a rel="bookmark" title="Permanent Link to {$atl['name']}"  href="{$weburl}{$atl['staticurl']}">{$atl['name']}</a></h2>
-        <div id="postTime"></div>
         <!--文章内容开始-->
         <div id="content">{$atl['content']}</div>
         <!--文章内容结束-->
         <div id="postDetal">
-            <p>时间：{run:}echo date("Y-m-d",$atl['times']);{/run} | 类别:<a href="{$weburl}{$cats[$atl['cat']]['staticurl']}">{$cats[$atl['cat']]['name']}</a> | 阅读:{$atl['views']} | 评论:{$atl['cmtcount']} | 
-                标签:{run:}$tagarray=explode(',',$atl['tags']);{/run}<!-- $tagarray AS $tag --><a href="{$weburl}?tag={run:}echo urlencode($tag);{/run}">{$tag}</a> <!-- END --></p>
+            发布时间：{run:}echo date("Y-m-d",$atl['times']);{/run}<span></span>
+            类别：<a href="{$cats[$atl['cat']]['staticurl']}">{$cats[$atl['cat']]['name']}</a><span></span>
+            阅读：{$atl['views']}<span></span>
+            评论：{$atl['cmtcount']}<span></span>
+            标签：{run:}$tagarray=explode(',',$atl['tags']);{/run}<!-- $tagarray AS $tag --><a href="{weburl}?tag={run:}echo urlencode($tag);{/run}">{tag}</a> <!-- END --> 
         </div>
         <!--文章内容底部广告开始-->
 
@@ -23,8 +25,6 @@
         <div class="clear"></div>
     </div>
     <!-- IF[$atl['allowcmt']==1] -->{inc:comments}<!-- END -->
-
-
 </div>
 {inc:sidebar}
 {inc:footer}

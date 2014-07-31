@@ -82,32 +82,66 @@ body {background-color: #e6e6e6;padding: 50px 0;}
     height: 50px;
     line-height: 40px;
 }
+#post .arttitle a {
+    color: #333;
+}
 #post #content {
     font-size: 14px;
     line-height: 200%;
+    color: #555;
 }
 #post #postDetal {
+    font-size: 12px;
+    margin-top: 10px;
+    color: #adadad;
     height: 30px;
     line-height: 30px;
-    margin: 10px 0;
 }
-#post #postDetal p {
-    font-size: 12px;
-    font-family: "宋体" !important;
-    color: #999;
+#post #postDetal a {
+    color: #adadad;
 }
-#post #postDetal p a {
-    font-size: 12px;
-    font-family: "宋体" !important;
-    color: #999;
+#post #postDetal a:hover {
+    color: #21759b;
+}
+#post #postDetal span {
+    margin: 0 10px;
 }
 .npPost {
-    margin-bottom: 10px;
+    margin: 20px 0;
+    padding: 10px 0;
+    border: 1px solid #eee;
+    border-left: none;
+    border-right: none;
 }
 .npPost p {
     height: 25px;
     line-height: 25px;
-    font-size: 14px;
+    font-size: 12px;
+    color: #777;
+}
+.comment_head {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    line-height: 30px;
+}
+.comment_post {
+    
+}
+.comment_post p {
+    line-height: 40px;
+}
+.comment_post .comment_input_text {
+    border: 1px solid #CFCFCF;
+    height: 30px;
+    width: 200px;
+    padding-left: 5px;
+}
+.comment_post .comment_input_textarea {
+    border: 1px solid #CFCFCF;
+    height: 100px;
+    width: 400px;
+    padding-left: 5px;
 }
 #bodyRight {
     float: left;

@@ -1,4 +1,4 @@
-<h3 id="comments" class="cat_heading" >当前共有{$cmtotal}条留言  </h3>
+<h3 class="comment_head">当前共有{$cmtotal}条留言  </h3>
 
 <ol class="commentlist" id="commentlist" >
     <!-- $comments AS $cot -->
@@ -32,36 +32,33 @@
 <div id="commentsnavi">
     <!--分页敬请期待-->
 </div>
-<h3 id="respond">发表评论</h3>
+<h3 class="comment_head">发表评论</h3>
 <form action="{$weburl}api.php" method="post" id="commentform" onsubmit="return subcmt();" >
-    <div class="alignleft">
+    <div class="comment_post">
         <p>
-            <small>姓名: </small>
-            <label><input type="text" name="name" id="name"  size="25" tabindex="1" /></label>
+            <small>昵称：</small>
+            <label><input type="text" name="name" id="name" class="comment_input_text" size="25" tabindex="1" /></label>
         </p>
 
         <p>
-            <small>邮箱: </small>
-            <label><input type="text" name="emails" id="emails"  size="25" tabindex="2" /></label>
+            <small>邮箱：</small>
+            <label><input type="text" name="emails" id="emails" class="comment_input_text" size="25" tabindex="2" /></label>
         </p>
 
         <p>
-            <small>网址:</small>
-            <label><input type="text" name="websites" id="websites"  size="25" tabindex="3" /></label>
+            <small>网址：</small>
+            <label><input type="text" name="websites" id="websites" class="comment_input_text" size="25" tabindex="3" /></label>
         </p>
         <p>
-            <small>验证码:</small>
+            <small>验证码：</small>
             <label id="antiarea"><script src="{$weburl}api.php?action=comment&ctrl=code"></script></label>
         </p>
         <p>
-
-            <label> <input type="hidden" name="article_id" id="article_id" value="{$atl['id']}" />
-                <input type="hidden" name="ctrl" id="ctrl" value="save" />
-                <input type="hidden" name="action" id="action" value="comment" /></label>
-        </p>
-        <p><label><textarea name="comment" id="comment" tabindex="5"  ></textarea>
+            <label><textarea name="comment" id="comment" tabindex="5" class="comment_input_textarea" ></textarea>
                 <input name="submit" type="submit"  class="corner" id="submit" tabindex="6" value="提交评论" /></label>
         </p>
-
+        <input type="hidden" name="article_id" id="article_id" value="{$atl['id']}" />
+        <input type="hidden" name="ctrl" id="ctrl" value="save" />
+        <input type="hidden" name="action" id="action" value="comment" />
     </div>
 </form>

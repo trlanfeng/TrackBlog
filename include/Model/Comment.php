@@ -57,7 +57,7 @@ class Comment extends Article {
 		$bword=rand(0,100);
 		if($fword<$bword)list($fword,$bword) = array($bword,$fword);
 		$_SESSION['antirbt']=$fword-$bword;
-		die('document.getElementById("antiarea").innerHTML=\''.$fword.'-<input type="text" name="antirbt" id="antirbt"  size="4" tabindex="4" />='.$bword.'\'');
+		print_r('document.getElementById("antiarea").innerHTML=\''.$fword.'-<input type="text" name="antirbt" id="antirbt"  size="4" tabindex="4" />='.$bword.'\'');
 	}
 }
 ?>

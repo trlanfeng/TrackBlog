@@ -6,7 +6,7 @@ class Article{
 	public $id;
 	public $data;
 	public $mem;
-	function __construct($table,$id=0){
+	function __construct($table="",$id=0){
 		$this->table=$table;
 		$this->db=new Dbclass(SYS_ROOT.DB_NAME);
 		$this->mem=MEMCACHE?new Memcached(MEMCACHE):null;

@@ -1,6 +1,6 @@
 <?php
 define('WEBNAME','TrackCMS');
-define('WEBURL','./');
+define('WEBURL','http://localhost:75/');
 define('WEBINFO','TrackCMS');
 define('ANNOUNCE','TrackCMS');
 define('ADMINDIR','admin/');
