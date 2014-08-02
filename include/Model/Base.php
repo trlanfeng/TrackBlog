@@ -253,7 +253,7 @@ class Base{
 		$data.=";\n?>";
 		return $data;
 	}
-	//生成自定义URL
+	//生成自定义URL   $flag值为1则是文章URL，否则为栏目
 	static function creaturl($data='',$flag=1){
 		//获取父ID，将生成的栏目名组合 by trlanfeng @ 2014.04.05
         $db=new Dbclass(SYS_ROOT.DB_NAME);
@@ -268,18 +268,27 @@ class Base{
 					$data['fid'] = $fcatid['fid'];
 				}
 	        }
+            //如果父栏目不为空
 	        if (!empty($data['fid'])){
+                //获取父栏目的URL
 	            $fcatname = $db->get_one(TB.'category','id = '.$data['fid'],'staticurl');
 	            $fcatname = $fcatname['staticurl'];
 	            $lastpos = strrpos( $fcatname, '/');
 	            $fcatname = substr($fcatname, 0, $lastpos);
 	        }
+            var_dump($configurl);
 			$configurl=str_replace('{slug}',$data['slug'],Base::magic2word(ATLURL));
+            var_dump($configurl);
 			$configurl=str_replace('{catname}', $data['catname'], $fcatname.$configurl);
+            var_dump($configurl);
 			$configurl=str_replace('{id}',$data['id'],$configurl);
+            var_dump($configurl);
 			$configurl=str_replace('{Y}',date('Y',$data['times']),$configurl);
+            var_dump($configurl);
 			$configurl=str_replace('{m}',date('m',$data['times']),$configurl);
+            var_dump($configurl);
 			$configurl=str_replace('{d}',date('d',$data['times']),$configurl);
+            var_dump($configurl);
 		}else{
 			if (empty($data['fid']) && $data['id'] > 0){
 				$fcatid = $db->get_one(TB.'category','id = '.$data['id'],'fid');
@@ -296,7 +305,8 @@ class Base{
 			$configurl=str_replace('{catname}',urlencode($data['nickname']),$fcatname.Base::magic2word(CATURL));
 			$configurl=str_replace('{id}',$data['id'],$configurl);
 		}
-		return $configurl;
+        var_dump($configurl);
+		//return $configurl;
 	}
 	static function sendheader($status){
 		switch ( $status){

@@ -57,6 +57,7 @@ class Index{
 			$articles=self::$_db->getlist(TB.'cms','status=1 and id in('.substr($idlist,0,-1).')','*',EACHPAGE,'orders DESC,times DESC,id DESC');
 			$indexs='tag';
 		}elseif($path==''){
+            //首页
 			$articles=self::$_db->getlist(TB."cms",'status=1',"*",$eachpage*$page.','.$eachpage,"orders DESC,times DESC,id DESC");
 			if(is_writable(SYS_ROOT.CACHE.'art_array.inc')){
 				include(SYS_ROOT.CACHE.'art_array.inc');
@@ -69,17 +70,18 @@ class Index{
 			self::$cfile='index.html';
 			$indexs='index';
 		}elseif ($catinfo=self::$_db->get_one(TB."category",'status=1 and staticurl='."'".$path."'","*",1)) {
-				$GLOBALS['catlist']='';
-				//递归子栏目
-				function getcat($cats,$dbit){
-					foreach($cats as $cat){				
-						$GLOBALS['catlist'].=''.$cat['id'].',';
-						$cattails=$dbit->getlist(TB.'category','status=1 and fid='.intval($cat['id']),'id,fid');
-						if($cattails){
-							getcat($cattails,$dbit);
-						}
-					}
-				}
+            //栏目页
+            $GLOBALS['catlist']='';
+            //递归子栏目
+            function getcat($cats,$dbit){
+                foreach($cats as $cat){				
+                    $GLOBALS['catlist'].=''.$cat['id'].',';
+                    $cattails=$dbit->getlist(TB.'category','status=1 and fid='.intval($cat['id']),'id,fid');
+                    if($cattails){
+                        getcat($cattails,$dbit);
+                    }
+                }
+            }
             //关键词，描述          
             $keywords = $catinfo['keywords'];
             $description = $catinfo['description'];
@@ -100,46 +102,47 @@ class Index{
             $articles = self::$_db->getlist(TB . "cms", 'status=1 and cat in ' . $childcatidlist, "*", $eachpage * $page . ',' . $eachpage, "orders DESC,times DESC,id DESC");
             //结束：新增：查找栏目下所有文章（包括子栏目） by Trlanfeng @ 2013.06.01
             $totaldata = self::$_db->get_one(TB . 'cms', 'status=1 and cat in' . $childcatidlist, 'count(*) as total');
-				//$totaldata=self::$_db->get_one(TB.'cms','status=1 and cat in('.$catlist.')','count(*) as total');
-				$totalnum=$totaldata['total'];
-				$indexs=$page?($catinfo['listtpl']?$catinfo['listtpl']:'category'):($catinfo['cattpl']?$catinfo['cattpl']:'category');
-				$addtitle=$catinfo['name'];
-				self::$cfile=$path;
-			}else{
-				$tmp=self::$_db->get_one(TB."cms",'status=1 and staticurl='."'".$path."'","id",1) or Base::sendheader(404);
-				$id=$tmp['id'];
-				$atl=self::getatlbyid($id) or Base::sendheader(404);
-				if(VIEWSCOUNT){
-					$atl['views']=$atl['views']+1;
-					if(MEMCACHE){
-						self::$_mem=new Memcached(MEMCACHE);
-						if($atl['views']%20==1){
-							self::$_db->updatelist(TB."cms",'views=views+20',$atl['id']);
-						}
-						self::$_mem->set($id.'_cms',$atl);
-					}else{
-						self::$_db->updatelist(TB."cms",'views=views+1',$atl['id']);
-					}
-					
-					
-				}
-				$addtitle=$atl['name']?$atl['name'].'_':'';
+            //$totaldata=self::$_db->get_one(TB.'cms','status=1 and cat in('.$catlist.')','count(*) as total');
+            $totalnum=$totaldata['total'];
+            $indexs=$page?($catinfo['listtpl']?$catinfo['listtpl']:'category'):($catinfo['cattpl']?$catinfo['cattpl']:'category');
+            $addtitle=$catinfo['name'];
+            self::$cfile=$path;
+        }else{
+            //文章页
+            $tmp=self::$_db->get_one(TB."cms",'status=1 and staticurl='."'".$path."'","id",1) or Base::sendheader(404);
+            $id=$tmp['id'];
+            $atl=self::getatlbyid($id) or Base::sendheader(404);
+            if(VIEWSCOUNT){
+                $atl['views']=$atl['views']+1;
+                if(MEMCACHE){
+                    self::$_mem=new Memcached(MEMCACHE);
+                    if($atl['views']%20==1){
+                        self::$_db->updatelist(TB."cms",'views=views+20',$atl['id']);
+                    }
+                    self::$_mem->set($id.'_cms',$atl);
+                }else{
+                    self::$_db->updatelist(TB."cms",'views=views+1',$atl['id']);
+                }
+
+
+            }
+            $addtitle=$atl['name']?$atl['name'].'_':'';
             //关键词，描述          
             $keywords = $tmp['keywords'];
             $description = $tmp['description'];
-				//上一篇
-				$tmp=self::$_db->get_one(TB."cms",'status=1 and id<'.$id,"id",1);
-				$upart=self::getatlbyid($tmp['id']);
-				//下一篇
-				$tmp=self::$_db->get_one(TB."cms",'status=1 and id>'.$id,"id",1,'id');
-				$downart=self::getatlbyid($tmp['id']);
-				//评论
-				$tmp=self::$_db->get_one(TB."comment",'status=1 and article_id='.$id,"count(*) as num");
-				$cmtotal=$tmp['num'];
-				$comments=self::$_db->getlist(TB."comment",'status=1 and article_id='.$id,"*");
-				$addtitle=$atl['name'];
-				$indexs=$cats[$atl['cat']]['distpl']?$cats[$atl['cat']]['distpl']:'display';
-				self::$cfile=$path;
+            //上一篇
+            $tmp=self::$_db->get_one(TB."cms",'status=1 and id<'.$id,"id",1);
+            $upart=self::getatlbyid($tmp['id']);
+            //下一篇
+            $tmp=self::$_db->get_one(TB."cms",'status=1 and id>'.$id,"id",1,'id');
+            $downart=self::getatlbyid($tmp['id']);
+            //评论
+            $tmp=self::$_db->get_one(TB."comment",'status=1 and article_id='.$id,"count(*) as num");
+            $cmtotal=$tmp['num'];
+            $comments=self::$_db->getlist(TB."comment",'status=1 and article_id='.$id,"*");
+            $addtitle=$atl['name'];
+            $indexs=$cats[$atl['cat']]['distpl']?$cats[$atl['cat']]['distpl']:'display';
+            self::$cfile=$path;
 		}
 		$downpage=($page+1)*$eachpage<$totalnum?$page+1:$page;
 		$pagenum=ceil($totalnum/$eachpage);

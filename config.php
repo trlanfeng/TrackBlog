@@ -19,8 +19,8 @@ define('MEMCACHE','');
 define('TB','tc_');
 define('CREATHTML','0');
 define('VIEWSCOUNT','1');
-define('CATURL','/?cat={catname}');
-define('ATLURL','/?cat={catname}&id={id}');
+define('CATURL','?cat={catname}');
+define('ATLURL','?cat={catname}&id={id}');
 define('THEME','default/');
 //图片上传目录设置
 //默认为网站根目录 uploads 文件夹下
