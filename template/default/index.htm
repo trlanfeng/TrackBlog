@@ -21,9 +21,26 @@
     <!--循环结束-->
 
     <div class="navigation">
-        <!-- if($page>1) --><div class="floatLeft"><a href="{$weburl}index.php?p={$uppage}">&laquo; 上一页</a></div><!-- end -->
-        <!-- if($downpage!=$page) --><div class="floatRight"><a href="{$weburl}index.php?p={$downpage}">下一页 &raquo;</a></div><!-- end -->
+        <!-- if($page>1) --><div class="floatLeft"><a href="{$weburl}?p={$uppage}">&laquo; 上一页</a></div><!-- end -->
+        <!-- if($downpage!=$page) --><div class="floatRight"><a href="{$weburl}?p={$downpage}">下一页 &raquo;</a></div><!-- end -->
     </div>
+    
+    <!-- IF[$_i!=0] -->
+    <ul class=" pagination pagination-blue">
+        <a <!-- if(($page==0) || ($page==1)) -->disabled<!-- end --> class="pure-button" <!-- if(($page!=0) && ($page!=1)) -->href="{$weburl}?p={$uppage}"<!-- end --> >&laquo;</a>
+        <!-- for($i=1;$i<$pagenum+1;$i++) -->
+        <a id="page{$i}" href="{$weburl}?p={$i}">{$i}</a>
+        <!-- end -->
+        <a <!-- if($downpage==$page) -->disabled<!-- end --> class="pure-button" <!-- if($downpage!=$page) -->href="{$weburl}?p={$downpage}"<!-- end -->>&raquo;</a>
+    </ul>
+    <script>
+        thispage = "{$_GET['p']}";
+        if(thispage == "0" || thispage == "") {thispage = "1"}
+        $(function(){
+            $("#page"+thispage).addClass("active");
+        });
+    </script>
+    <!-- END -->
 </div>
 {inc:sidebar}
 <div class="clear"></div>
