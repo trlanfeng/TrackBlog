@@ -2,7 +2,6 @@
 include('config.php');
 include(SYS_ROOT.INC.'common.php');
 $path=$_SERVER['PATH_INFO'].($_SERVER['QUERY_STRING']?'?'.str_replace('?','',$_SERVER['QUERY_STRING']):'');
-var_dump($path);
 if(substr($path, 0,1)=='/'){
 	$path=substr($path,1);
 }

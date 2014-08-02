@@ -10,14 +10,10 @@ class Cms extends Article {
 		if( $this->data['remotepic'] == 1 ){
 			$this->data['content'] = $this->saveremotepic( $this->data['content'] );
 		}unset( $this->data['remotepic'] );
-		
-		//var_dump( $this->data['content'] );die;
 		$status=$this->db->add_one(TB.$this->table,$this->data);
 		$this->createtag($status);
 		$this->data['id']=$status;
-        var_dump($this->data);
 		$this->createurl($this->data);
-        /*
 		$this->save2memcache();
 		$this->countcache();
         //文章添加完毕后自动进行生成静态操作 by trlanfeng @ 2014.04.16
@@ -26,8 +22,6 @@ class Cms extends Article {
         } else {
             Base::execmsg("添加","../index.php?id=".$this->data['id']."&createprocess=1&single=1",$status);
         }
-         * 
-         */
 	}
 	function saveremotepic( $content )
 	{

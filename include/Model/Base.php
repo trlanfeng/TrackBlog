@@ -276,19 +276,12 @@ class Base{
 	            $lastpos = strrpos( $fcatname, '/');
 	            $fcatname = substr($fcatname, 0, $lastpos);
 	        }
-            var_dump($configurl);
 			$configurl=str_replace('{slug}',$data['slug'],Base::magic2word(ATLURL));
-            var_dump($configurl);
 			$configurl=str_replace('{catname}', $data['catname'], $fcatname.$configurl);
-            var_dump($configurl);
 			$configurl=str_replace('{id}',$data['id'],$configurl);
-            var_dump($configurl);
 			$configurl=str_replace('{Y}',date('Y',$data['times']),$configurl);
-            var_dump($configurl);
 			$configurl=str_replace('{m}',date('m',$data['times']),$configurl);
-            var_dump($configurl);
 			$configurl=str_replace('{d}',date('d',$data['times']),$configurl);
-            var_dump($configurl);
 		}else{
 			if (empty($data['fid']) && $data['id'] > 0){
 				$fcatid = $db->get_one(TB.'category','id = '.$data['id'],'fid');
@@ -305,8 +298,7 @@ class Base{
 			$configurl=str_replace('{catname}',urlencode($data['nickname']),$fcatname.Base::magic2word(CATURL));
 			$configurl=str_replace('{id}',$data['id'],$configurl);
 		}
-        var_dump($configurl);
-		//return $configurl;
+		return $configurl;
 	}
 	static function sendheader($status){
 		switch ( $status){
