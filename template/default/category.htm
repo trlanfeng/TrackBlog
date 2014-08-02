@@ -19,8 +19,8 @@
     <!--循环结束-->
 
     <div class="navigation">
-        <!-- if($page!=0) --><div class="floatLeft"><a href="{$weburl}index.php?p={$uppage}">&laquo; 上一页</a></div><!-- end -->
-        <!-- if($downpage!=$page) --><div class="floatRight"><a href="{$weburl}index.php?p={$downpage}">下一页 &raquo;</a></div><!-- end -->
+        <!-- if($page>1) --><div class="floatLeft"><a href="{$weburl}{$path}&p={$uppage}">&laquo; 上一页</a></div><!-- end -->
+        <!-- if($downpage!=$page) --><div class="floatRight"><a href="{$weburl}{$path}&p={$downpage}">下一页 &raquo;</a></div><!-- end -->
     </div>
 </div>
 {inc:sidebar}

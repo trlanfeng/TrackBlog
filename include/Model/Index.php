@@ -84,9 +84,9 @@ class Index{
             //关键词，描述          
             $keywords = $catinfo['keywords'];
             $description = $catinfo['description'];
-				$catid=$catinfo['id'];
-				getcat(array($catid=>array('id'=>$catid)),self::$_db);
-				$catlist=substr($GLOBALS['catlist'],0,-1);
+            $catid=$catinfo['id'];
+            getcat(array($catid=>array('id'=>$catid)),self::$_db);
+            $catlist=substr($GLOBALS['catlist'],0,-1);
             //修改只查栏目下文章为查栏目下所有子栏目的文章
             //$articles=self::$_db->getlist(TB."cms",'status=1 and cat='.$catinfo['id'],"*",$eachpage*$page.','.$eachpage,"orders DESC,times DESC,id DESC");
             //开始：新增：查找栏目下所有文章（包括子栏目） by Trlanfeng @ 2013.06.01
@@ -98,7 +98,7 @@ class Index{
             }
             $childcatidlist .= $catinfo['id'];
             $childcatidlist .= ')';
-            $articles = self::$_db->getlist(TB . "cms", 'status=1 and cat in ' . $childcatidlist, "*", $eachpage * $page . ',' . $eachpage, "orders DESC,times DESC,id DESC");
+            $articles = self::$_db->getlist(TB . "cms", 'status=1 and cat in ' . $childcatidlist, "*", $eachpage * ($page-1) . ',' . $eachpage, "orders DESC,times DESC,id DESC");
             //结束：新增：查找栏目下所有文章（包括子栏目） by Trlanfeng @ 2013.06.01
             $totaldata = self::$_db->get_one(TB . 'cms', 'status=1 and cat in' . $childcatidlist, 'count(*) as total');
             //$totaldata=self::$_db->get_one(TB.'cms','status=1 and cat in('.$catlist.')','count(*) as total');
