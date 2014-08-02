@@ -67,7 +67,7 @@
 <div class="text-center"> 
 	<ul class="pagination">
 		<li class="<!-- if(($page==0) || ($page==1)) -->disabled<!-- end -->"><a <!-- if(($page!=0) && ($page!=1)) -->href="?action=cms&ctrl=lists&p={$uppage}&cat={$_GET['cat']}&status={$_GET['status']}&name={$_GET['name']}"<!-- end --> >&laquo;</a></li>
-		<!-- for($i=1;$i<$pagenum;$i++) -->
+		<!-- for($i=1;$i<$pagenum+1;$i++) -->
 		<li id="page{$i}"><a href="?action=cms&ctrl=lists&p={$i}&cat={$_GET['cat']}&status={$_GET['status']}&name={$_GET['name']}">{$i}</a></li>
 		<!-- end -->
 		<li class="<!-- if($downpage==$page) -->disabled<!-- end -->"><a <!-- if($downpage!=$page) -->href="?action=cms&ctrl=lists&p={$downpage}&cat={$_GET['cat']}&status={$_GET['status']}&name={$_GET['name']}"<!-- end -->>&raquo;</a></li>

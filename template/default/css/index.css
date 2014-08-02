@@ -43,6 +43,9 @@ body {background-color: #e6e6e6;padding: 50px 0;}
     float: left;
     margin: 0 20px;
 }
+#nav li a {
+    color: #888;
+}
 #bodyLeft {
     float: left;
     width: 650px;
@@ -190,6 +193,10 @@ body {background-color: #e6e6e6;padding: 50px 0;}
     padding: 20px 0;
     text-align: center;
     font-size: 14px;
+    color: #888;
+}
+#footer a {
+    color: #888;
 }
 #footer .copy {
     font-family: "Arial";

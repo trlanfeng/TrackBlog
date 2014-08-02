@@ -33,8 +33,8 @@ class Index{
 		$tag=Base::safeword( Base::safeword(isset($_GET['tag'])?$_GET['tag']:null) , 5 );
 		$index=new Index();
 		$eachpage=EACHPAGE;
-		$page=isset($_GET['p'])?intval($_GET['p']):0;
-		$uppage=$page>0?$page-1:0;
+		$page=isset($_GET['p'])?intval($_GET['p']):1;
+		$uppage=$page>1?$page-1:1;
 		//替换掉url中分页的参数
 		$path=preg_replace("/\?{0,1}&{0,1}p=(\d*)/",'',$path);
 		//支持getlist模板标签
@@ -58,7 +58,7 @@ class Index{
 			$indexs='tag';
 		}elseif($path==''){
             //首页
-			$articles=self::$_db->getlist(TB."cms",'status=1',"*",$eachpage*$page.','.$eachpage,"orders DESC,times DESC,id DESC");
+			$articles=self::$_db->getlist(TB."cms",'status=1',"*",$eachpage*($page-1).','.$eachpage,"orders DESC,times DESC,id DESC");
 			if(is_writable(SYS_ROOT.CACHE.'art_array.inc')){
 				include(SYS_ROOT.CACHE.'art_array.inc');
 				$totalnum=$articleData['count'];
@@ -66,7 +66,6 @@ class Index{
 				$totaldata=self::$_db->get_one(TB.'cms','status=1','count(*) as total');
 				$totalnum=$totaldata['total'];
 			}
-			$downpage=($page+1)*$eachpage<$totalnum?$page+1:$page;
 			self::$cfile='index.html';
 			$indexs='index';
 		}elseif ($catinfo=self::$_db->get_one(TB."category",'status=1 and staticurl='."'".$path."'","*",1)) {
@@ -144,8 +143,8 @@ class Index{
             $indexs=$cats[$atl['cat']]['distpl']?$cats[$atl['cat']]['distpl']:'display';
             self::$cfile=$path;
 		}
-		$downpage=($page+1)*$eachpage<$totalnum?$page+1:$page;
 		$pagenum=ceil($totalnum/$eachpage);
+        $downpage=$page<$pagenum?$page+1:$page;
 		ob_start();
 		include(self::$tpl->myTpl($indexs,THEME,'self::$tpl'));
 		self::$data=ob_get_contents();

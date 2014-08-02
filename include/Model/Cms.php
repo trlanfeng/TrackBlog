@@ -127,7 +127,7 @@ class Cms extends Article {
 		$page=$_GET['p'];
 		$uppage=$page>0?$page-1:0;
 		$downpage=($page+1)*$eachpage<$total?$page+1:$page;
-		$list=$this->db->getlist(TB."cms",'1=1'.$addsql,"*",$eachpage*$page.','.$eachpage,"orders DESC,id DESC");
+		$list=$this->db->getlist(TB."cms",'1=1'.$addsql,"*",$eachpage*($page-1).','.$eachpage,"orders DESC,id DESC");
 		include($this->tpl->myTpl('manage'.$this->table));
 	}
 	function createtag($articleId){
