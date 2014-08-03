@@ -124,7 +124,7 @@ class Cms extends Article {
 		$totaldata=$this->db->getlist(TB."cms",'1=1'.$addsql,"count(*)");
 		$total=$totaldata[0]['count(*)'];
 		$pagenum=ceil($total/$eachpage);
-		$page=$_GET['p'];
+        $page=isset($_GET['p'])?intval($_GET['p']):1;
 		$uppage=$page>0?$page-1:0;
 		$downpage=($page+1)*$eachpage<$total?$page+1:$page;
 		$list=$this->db->getlist(TB."cms",'1=1'.$addsql,"*",$eachpage*($page-1).','.$eachpage,"orders DESC,id DESC");

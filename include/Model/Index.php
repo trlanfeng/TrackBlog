@@ -13,7 +13,9 @@ class Index{
 	static public function createdata($path){
 		self::$_db=new Dbclass(SYS_ROOT.DB_NAME);
 		self::$tpl=new Template();
-		self::$_mem=new Memcached(MEMCACHE);
+        if (MEMCACHE != "") {
+            self::$_mem=new Memcached(MEMCACHE);
+        }
 		//直接用数组缓存
 		if(is_writable(SYS_ROOT.CACHE.'cat_array.inc')){
 			include(SYS_ROOT.CACHE.'cat_array.inc');
