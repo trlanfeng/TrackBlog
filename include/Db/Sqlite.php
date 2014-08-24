@@ -139,7 +139,7 @@ class Dbclass {
     }
     function halt($message = '',$sql = ''){
         if( $this->errno() == 1 ){
-            Base::showmessage( 'TrackCMS可能未被正确安装，即将跳转到安装页面。' , WEBURL . 'install.php' );
+            Base::showmessage( 'TrackCMS可能未被正确安装，即将跳转到安装页面。' , WEBURL . 'install/' );
         }
         exit("SqliteQuery:$sql <br> SqliteError:" . $this->error() . " <br> SqliteErrno:" . $this->errno() . " <br> Message:$message");
     } 

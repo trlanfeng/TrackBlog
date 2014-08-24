@@ -1,7 +1,7 @@
 *{margin:0; padding:0;}
 /*框架*/
 /*html,body {height: 100%;}*/
-html,body {background-color: #2E363F !important;height: 100%;}
+html,body {height: 100%;}
 .header {height: 50px;border-bottom: 1px solid #1f262d;background-color: #2E363F;color:white;line-height: 50px;font-size: 16px;font-weight: bold;padding-left: 30px;}
 .menu,.box .main {vertical-align: top;}
 .menu {width: 180px;background-color: #2E363F; }

@@ -35,7 +35,8 @@ if ($_POST) {
     $configs = file_get_contents('../config.php');
     $_POST['tb'] && $configs = str_replace('define(\'TB\',	\'' . TB . '\');', 'define(\'TB\',	\'' . $_POST['tb'] . '\');', $configs);
     $configs = str_replace('define(\'DB\',	\'' . DB . '\');', 'define(\'DB\',	\'Mysql\');', $configs);
-    $_POST['db_name'] && $configs = str_replace('define(\'DB_NAME\',	\'' . DB_NAME . '\');', 'define(\'DB_NAME\',	\'' . $_POST['db_name'] . '\');', $configs);
+    $dbname = "|".$_POST['db_host']."|".$_POST['db_username']."|".$_POST['db_password']."|".$_POST['db_name'];
+    $configs = str_replace('define(\'DB_NAME\',	\'' . DB_NAME . '\');', 'define(\'DB_NAME\',	\'' . $dbname . '\');', $configs);
     file_put_contents('../config.php', $configs);
     file_put_contents('../data/install.lock', '');
     header("Location: step-finish.php");

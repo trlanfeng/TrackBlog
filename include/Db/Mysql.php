@@ -25,7 +25,7 @@ class Dbclass {
         }
         else{
             $dbconfig=explode('|',$dbhost);
-            if(count($dbconfig)<4)Base::showmessage( 'TrackCMS未被正确安装或配置导致无法读取数据'.$this->error().$this->errno() , WEBURL . 'index.php' );
+            if(count($dbconfig)<4)Base::showmessage( 'TrackCMS未被正确安装或配置导致无法读取数据'.$this->error().$this->errno() , WEBURL . '/install' );
             $dbhost=$dbconfig[1];
             $dbuser=$dbconfig[2];
             $dbpw=$dbconfig[3];
@@ -162,7 +162,7 @@ class Dbclass {
 
     function halt(){
         if(in_array($this->errno(),array(1049,1146,2002,1046))){
-            Base::showmessage( 'TrackCMS未被正确安装或配置导致无法读取数据'.$this->error().$this->errno() , WEBURL . 'index.php' );
+            Base::showmessage( 'TrackCMS未被正确安装或配置导致无法读取数据'.$this->error().$this->errno() , WEBURL . 'install/' );
         }
 
         echo $this->error() . ':' . $this->errno();
