@@ -49,7 +49,7 @@ class Index{
 			$totalnum=$totaldata['num'];
 			$addtail='&tag='.$tag;
 			$indexs='tag';
-			$o=self::$_db->getlist(TB.'relatocms','relid='.$tagdata['id'],'cmsid',$eachpage*$page.','.$eachpage);
+			$o=self::$_db->getlist(TB.'relatocms','relid='.$tagdata['id'],'cmsid',$eachpage*($page-1).','.$eachpage);
 			$idlist='';
 			if(is_array($o))
 				foreach($o as $v){
