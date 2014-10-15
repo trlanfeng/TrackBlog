@@ -168,7 +168,12 @@ class Dbclass {
         echo $this->error() . ':' . $this->errno();
     }
     function close(){
-        mysql_close();
+        if(RUNONSAE){
+        }elseif(RUNONBAE){
+        }
+        else{
+            mysql_close();
+        }
     }
 
     function __destruct(){
