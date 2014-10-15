@@ -166,9 +166,14 @@ class Cms extends Article {
 		}
 	}
 	function countcache(){
-		$totalnum['count']=$this->counts();
+            if(RUNONSAE){
+            }elseif(RUNONBAE){
+            }
+            else{
+                $totalnum['count']=$this->counts();
 		$arrayData=Base::phpcache('articleData',$totalnum);
 		file_put_contents(SYS_ROOT.CACHE."art_array.inc",$arrayData);
+            }
 	}
 	public function createurl($data){
 		//生成url
