@@ -1,6 +1,7 @@
-/data/
-/pictures/
-/admin/template/images/ueditor/php/upload/
-/admin/template/images/ueditor/php/upload1/
-/template/taoCMS/
-/nbproject/
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
