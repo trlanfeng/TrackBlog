@@ -10,4 +10,3 @@ $model=new $m();
 if (method_exists($m,$ctrl)) {
 	$model->$ctrl();
 }
-//test
