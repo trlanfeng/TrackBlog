@@ -1,16 +1,26 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+/**
+* 管理类
+*/
+class Admin extends CI_Controller
+{
+	
+	public function __construct()
+	{
+		//加载model
+		//
+	}
+	public function index()
+	{
 
-class Admin extends CI_Controller {
-    
-    function __construct() {
-        $this->load->library('session');
-        if ($this->session->userdata("is_login") != "true"){
-            // TODO 跳转登陆页面
-        }
-    }
-    
-    public function index() {
-        
-    }
-    
+	}
+	public function login()
+	{
+
+	}
+	public function logout()
+	{
+
+	}
 }
+?>

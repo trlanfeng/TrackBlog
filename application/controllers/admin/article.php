@@ -1,22 +1,38 @@
 <?php
+/**
+* 文章管理
+*/
+class Article extends Admin
+{
+	
+	public function __construct()
+	{
+		//加载model
+		//
+	}
+	public function index()
+	{
 
-class Article extends Admin {
-    function __construct() {
-        parent::__construct();
-    }
-    function index() {
-        
-    }
-    function manage() {
-        $this->load->view("admin/article_manage");
-    }
-    function add() {
-        
-    }
-    function edit() {
-        
-    }
-    function delete() {
-        
-    }
+	}
+	public function show_one()
+	{
+
+	}
+	public function show_list()
+	{
+
+	}
+	public function add()
+	{
+
+	}
+	public function edit()
+	{
+
+	}
+	public function delete()
+	{
+
+	}
 }
+?>
