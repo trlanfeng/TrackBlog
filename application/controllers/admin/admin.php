@@ -28,33 +28,32 @@ class Admin extends CI_Controller
 	}
 	public function check_login()
 	{
-		if ($_SESSION['username'] == '')
-		{
-			return false;
-		}
-		else
+		if (isset($_SESSION['username']))
 		{
 			return true;
 		}
-		$this->form_validation->set_rules('username','用户名','required|max_length[16]');
-		$this->form_validation->set_rules('password','密码','required|max_length[16]');
-		if ($this->form_validation->run() === FALSE)
-		{
-			echo '数据检测不通过';
-		}
 		else
 		{
-			$data = $this->admin_model->getOne($_POST['username']);
-			$password = md5($_POST['password']);
-			$password = substr($password,0,strlen($password)-2);
-			if ($data['passwd'] === substr(md5($_POST['password']),0,strlen(md5($_POST['password']))-2))
+			$this->form_validation->set_rules('username','用户名','required|max_length[16]');
+			$this->form_validation->set_rules('password','密码','required|max_length[16]');
+			if ($this->form_validation->run() === FALSE)
 			{
-				echo '验证通过！';
-				$_SESSION['username'] = "孤月蓝风";
+
 			}
 			else
 			{
-				echo '验证失败！';
+				$data = $this->admin_model->getOne($_POST['username']);
+				$password = md5($_POST['password']);
+				$password = substr($password,0,strlen($password)-2);
+				if ($data['passwd'] === $password)
+				{
+					echo '验证通过！';
+					$_SESSION['username'] = $_POST['username'];
+				}
+				else
+				{
+					echo '验证失败！';
+				}
 			}
 		}
 	}
