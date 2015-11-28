@@ -18,8 +18,9 @@ class Admin extends CI_Controller
 	{
 		if ($this->check_login())
 		{
-			echo '登陆成功后的首页';
-			$this->load->view('admin/logout');
+			$this->load->view('admin/header');
+			$this->load->view('admin/index');
+			$this->load->view('admin/footer');
 		}
 		else
 		{
@@ -38,7 +39,7 @@ class Admin extends CI_Controller
 			$this->form_validation->set_rules('password','密码','required|max_length[16]');
 			if ($this->form_validation->run() === FALSE)
 			{
-
+				return false;
 			}
 			else
 			{
@@ -47,12 +48,13 @@ class Admin extends CI_Controller
 				$password = substr($password,0,strlen($password)-2);
 				if ($data['passwd'] === $password)
 				{
-					echo '验证通过！';
 					$_SESSION['username'] = $_POST['username'];
+					return true;
 				}
 				else
 				{
 					echo '验证失败！';
+					return false;
 				}
 			}
 		}
