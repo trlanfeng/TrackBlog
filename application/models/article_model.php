@@ -16,17 +16,17 @@ class Article_model extends CI_Model
         $query = $this->db->get_where('cms_cms',$filter,$limit,$offset);
         return $query->result_array();
     }
-    public function add()//
+    public function add($data)//
     {
-
+        $this->db->insert('cms_cms',$data);
     }
-    public function edit()
+    public function edit($id,$data)
     {
-
+        $this->db->update('cms_cms',$data,array('id'=>$id));
     }
-    public function delete()
+    public function delete($id)
     {
-
+        $this->db->delete('cms_cms',array('id'=>$id));
     }
 }
 ?>

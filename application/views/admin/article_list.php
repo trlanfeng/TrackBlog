@@ -2,8 +2,8 @@
 <div class="admin-content">
 
     <div class="am-cf am-padding">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">表格</strong> /
-            <small>Table</small>
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">栏目</strong> /
+            <small><?php echo $catname; ?></small>
         </div>
     </div>
 
@@ -25,13 +25,10 @@
         <div class="am-u-sm-12 am-u-md-3">
             <div class="am-form-group">
                 <select data-am-selected="{btnSize: 'sm'}">
-                    <option value="option1">所有类别</option>
-                    <option value="option2">IT业界</option>
-                    <option value="option3">数码产品</option>
-                    <option value="option3">笔记本电脑</option>
-                    <option value="option3">平板电脑</option>
-                    <option value="option3">只能手机</option>
-                    <option value="option3">超极本</option>
+                    <option value="0">所有类别</option>
+                    <?php foreach ($catlist as $cat): ?>
+                        <option value="<?php echo $cat['id'] ?>"><?php echo $cat['name'] ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
         </div>
@@ -61,28 +58,33 @@
                     </thead>
                     <tbody>
                     <?php foreach ($articleList as $row): ?>
-                    <tr>
-                        <td><input type="checkbox"/></td>
-                        <td><?php echo $row['id']; ?></td>
-                        <td><a href="<?php echo '/index.php/admin/article/show_one/'.$row['id']; ?>"><?php echo $row['name']; ?></a></td>
-                        <td><?php echo $row['cat']; ?></td>
-                        <td class="am-hide-sm-only"><?php echo $row['times']; ?></td>
-                        <td>
-                            <div class="am-btn-toolbar">
-                                <div class="am-btn-group am-btn-group-xs">
-                                    <a class="am-btn am-btn-default am-btn-xs" href="<?php echo '/index.php/admin/article/show_one/'.$row['id']; ?>"><span
-                                            class="am-icon-copy"></span> 查看
-                                    </a>
-                                    <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="<?php echo '/index.php/admin/article/show_one/'.$row['id']; ?>"><span
-                                            class="am-icon-pencil-square-o"></span> 编辑
-                                    </a>
-                                    <a class="am-btn am-btn-default am-btn-xs am-text-danger" href="<?php echo '/index.php/admin/article/show_one/'.$row['id']; ?>">
-                                        <span class="am-icon-trash-o"></span> 删除
-                                    </a>
+                        <tr>
+                            <td><input type="checkbox"/></td>
+                            <td><?php echo $row['id']; ?></td>
+                            <td>
+                                <a href="<?php echo '/index.php/admin/article/show_one/' . $row['id']; ?>"><?php echo $row['name']; ?></a>
+                            </td>
+                            <td><?php echo $row['catname']; ?></td>
+                            <td class="am-hide-sm-only"><?php echo $row['datatime']; ?></td>
+                            <td>
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <a class="am-btn am-btn-default am-btn-xs"
+                                           href="<?php echo '/index.php/admin/article/show_one/' . $row['id']; ?>"><span
+                                                class="am-icon-copy"></span> 查看
+                                        </a>
+                                        <a class="am-btn am-btn-default am-btn-xs am-text-secondary"
+                                           href="<?php echo '/index.php/admin/article/show_one/' . $row['id']; ?>"><span
+                                                class="am-icon-pencil-square-o"></span> 编辑
+                                        </a>
+                                        <a class="am-btn am-btn-default am-btn-xs am-text-danger"
+                                           href="<?php echo '/index.php/admin/article/show_one/' . $row['id']; ?>">
+                                            <span class="am-icon-trash-o"></span> 删除
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
                     <?php endforeach; ?>
                     </tbody>
                 </table>

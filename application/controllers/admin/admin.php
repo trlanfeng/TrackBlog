@@ -9,7 +9,7 @@ class Admin extends CI_Controller
 	{
 		parent::__construct();
 		//加载model
-		$this->load->model('admin/admin_model');
+		$this->load->model('admin_model');
 		$this->load->library('session');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
