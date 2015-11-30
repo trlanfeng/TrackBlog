@@ -67,7 +67,7 @@
                         <tr>
                             <td><input type="checkbox"/></td>
                             <td><?php echo $row['id']; ?></td>
-                            <td><a href="<?php echo '/index.php/admin/category/show_one/'.$row['id']; ?>"><?php echo $row['name']; ?></a></td>
+                            <td><a href="<?php echo '/index.php/admin/category/edit/'.$row['id']; ?>"><?php echo $row['name']; ?></a></td>
                             <td><?php echo $row['nickname']; ?></td>
                             <td><?php echo $row['intro']; ?></td>
                             <td><?php echo $row['status']; ?></td>

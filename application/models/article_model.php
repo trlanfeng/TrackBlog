@@ -16,7 +16,7 @@ class Article_model extends CI_Model
         $query = $this->db->get_where('cms_cms',$filter,$limit,$offset);
         return $query->result_array();
     }
-    public function add($data)//
+    public function add($data)
     {
         $this->db->insert('cms_cms',$data);
     }
