@@ -6,9 +6,8 @@
             <small>form</small>
         </div>
     </div>
-    <form class="am-form">
+    <form class="am-form" action="/index.php/admin/article/add" method="post">
         <div class="am-tabs am-margin" data-am-tabs>
-
             <ul class="am-tabs-nav am-nav am-nav-tabs">
                 <li class="am-active"><a href="#tab1">文章信息</a></li>
                 <li><a href="#tab2">其他选项</a></li>
@@ -20,7 +19,7 @@
                     <div class="am-g am-margin-top">
                         <div class="am-u-sm-12 am-u-md-2 am-text-right  admin-form-text">所属类别</div>
                         <div class="am-u-sm-12 am-u-md-10">
-                            <select data-am-selected="{btnSize: 'sm'}">
+                            <select data-am-selected="{btnSize: 'sm'}" name="cat">
                                 <?php foreach ($catlist as $row): ?>
                                     <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
                                 <?php endforeach; ?>
@@ -33,7 +32,7 @@
                             文章标题
                         </div>
                         <div class="am-u-sm-12 am-u-md-6">
-                            <input type="text" class="am-input-sm" value="">
+                            <input type="text" name="name" class="am-input-sm" value="">
                         </div>
                         <div class="am-u-md-4"></div>
                     </div>
@@ -43,7 +42,7 @@
                             关键字
                         </div>
                         <div class="am-u-sm-12 am-u-md-6 am-u-end col-end">
-                            <input type="text" class="am-input-sm" value="">
+                            <input type="text" name="keywords" class="am-input-sm" value="">
                         </div>
                         <div class="am-u-md-4"></div>
                     </div>
@@ -53,7 +52,7 @@
                             描述
                         </div>
                         <div class="am-u-sm-12 am-u-md-6">
-                            <textarea rows="3"></textarea>
+                            <textarea rows="3" name="description"></textarea>
                         </div>
                         <div class="am-u-md-4">不填写则自动截取内容前255字符</div>
                     </div>
@@ -62,7 +61,7 @@
                             缩略图
                         </div>
                         <div class="am-u-sm-12 am-u-md-6 am-u-end col-end">
-                            <input type="text" class="am-input-sm">
+                            <input type="text" name="thumbpic" class="am-input-sm">
                         </div>
                         <div class="am-u-md-4"></div>
                     </div>
@@ -85,7 +84,7 @@
                             标签
                         </div>
                         <div class="am-u-sm-12 am-u-md-6 am-u-end col-end">
-                            <input type="text" class="am-input-sm" value="">
+                            <input type="text" class="am-input-sm" name="tags" value="">
                         </div>
                         <div class="am-u-md-4"></div>
                     </div>
@@ -98,13 +97,13 @@
                         <div class="am-u-sm-9 am-u-md-10">
                             <div class="am-btn-group" data-am-button>
                                 <label class="am-btn am-btn-default am-btn-xs">
-                                    <input type="radio" name="options" id="option1"> 正常
+                                    <input type="radio" id="option1"> 正常
                                 </label>
                                 <label class="am-btn am-btn-default am-btn-xs">
-                                    <input type="radio" name="options" id="option2"> 待审核
+                                    <input type="radio" id="option2"> 待审核
                                 </label>
                                 <label class="am-btn am-btn-default am-btn-xs">
-                                    <input type="radio" name="options" id="option3"> 不显示
+                                    <input type="radio" id="option3"> 不显示
                                 </label>
                             </div>
                         </div>
@@ -114,10 +113,10 @@
                         <div class="am-u-sm-9 am-u-md-10">
                             <div class="am-btn-group" data-am-button>
                                 <label class="am-btn am-btn-default am-btn-xs">
-                                    <input type="radio" name="options" id="option1"> 开启
+                                    <input type="radio" id="option1"> 开启
                                 </label>
                                 <label class="am-btn am-btn-default am-btn-xs">
-                                    <input type="radio" name="options" id="option2"> 关闭
+                                    <input type="radio" id="option2"> 关闭
                                 </label>
                             </div>
                         </div>
@@ -146,10 +145,10 @@
                         <div class="am-u-sm-9 am-u-md-10">
                             <div class="am-btn-group" data-am-button>
                                 <label class="am-btn am-btn-default am-btn-xs">
-                                    <input type="radio" name="options" id="option1"> 开启
+                                    <input type="radio" id="option1"> 开启
                                 </label>
                                 <label class="am-btn am-btn-default am-btn-xs">
-                                    <input type="radio" name="options" id="option2"> 关闭
+                                    <input type="radio" id="option2"> 关闭
                                 </label>
                             </div>
                         </div>
@@ -159,7 +158,7 @@
                             跳转地址
                         </div>
                         <div class="am-u-sm-12 am-u-md-6 am-u-end col-end">
-                            <input type="text" class="am-input-sm" value="">
+                            <input type="text" name="link" class="am-input-sm" value="">
                         </div>
                         <div class="am-u-md-4"></div>
                     </div>
@@ -168,7 +167,7 @@
                             排序
                         </div>
                         <div class="am-u-sm-12 am-u-md-6 am-u-end col-end">
-                            <input type="text" class="am-input-sm" value="">
+                            <input type="text" name="orders" class="am-input-sm" value="">
                         </div>
                         <div class="am-u-md-4"></div>
                     </div>
@@ -178,7 +177,7 @@
                         </div>
                         <div class="am-u-sm-9 am-u-md-6">
                             <div class="am-input-group am-datepicker-date" data-am-datepicker="{format: 'yyyy-mm-dd'}">
-                                <input type="text" class="am-form-field am-input-sm" placeholder="日历组件" readonly>
+                                <input type="text" name="times" class="am-form-field am-input-sm" placeholder="日历组件" readonly>
                                 <span class="am-input-group-btn am-datepicker-add-on">
                                     <button class="am-btn am-btn-default am-btn-sm" type="button">
                                         <span class="am-icon-calendar"></span>
@@ -193,8 +192,8 @@
             </div>
         </div>
         <div class="am-margin">
-            <input type="submit" value="提交保存" class="am-btn am-btn-primary am-btn-xs">
-            <input type="reset" value="放弃保存" class="am-btn am-btn-danger am-btn-xs">
+            <input type="submit" name="submit" value="提交保存" class="am-btn am-btn-primary am-btn-xs">
+            <input type="reset" name="reset" value="放弃保存" class="am-btn am-btn-danger am-btn-xs">
         </div>
     </form>
 </div>

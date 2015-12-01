@@ -47,7 +47,15 @@ class Article extends CI_Controller
     public function add()
     {
         if (isset($_POST['submit'])) {
-            $this->article_model->add($_POST);
+            if ($this->article_model->add($_POST))
+            {
+                unset($_POST);
+                $this->showMessage('success','数据添加成功！','/index.php/admin/article/show_list');
+            }
+            else
+            {
+                $this->showMessage('danger','数据添加失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风','/index.php/admin/article/show_list');
+            }
         } else {
             $filter = array();
             $catList = $this->category_model->getList($filter, 0, 0, 'orders ASC');
@@ -60,8 +68,16 @@ class Article extends CI_Controller
 
     public function edit($id)
     {
-        if (isset($_POST['submit'])) {
-            $this->article_model->edit($id, $_POST);
+        if (isset($_POST)) {
+            if ($this->article_model->edit($id, $_POST))
+            {
+                unset($_POST);
+                $this->showMessage('success','数据修改成功！','/index.php/admin/article/show_list');
+            }
+            else
+            {
+                $this->showMessage('danger','数据修改失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风','/index.php/admin/article/show_list');
+            }
         } else {
             $data = $this->article_model->getOne($id);
             $filter = array();
@@ -75,13 +91,28 @@ class Article extends CI_Controller
 
     public function delete($id)
     {
-        $this->article_model->delete($id);
+        if ($this->article_model->delete($id))
+        {
+            $this->showMessage('success','数据删除成功！','/index.php/admin/article/show_list');
+        }
+        else
+        {
+            $this->showMessage('danger','数据删除失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风','/index.php/admin/article/show_list');
+        }
     }
 
     public function getCatnameById($id)
     {
         $cat = $this->category_model->getOne($id);
         return $cat['name'];
+    }
+
+    public function showMessage($type = 'default',$content = '',$url = '/')
+    {
+        $data['type'] = $type;
+        $data['content'] = $content;
+        $data['url'] = $url;
+        $this->load->view('showmessage',$data);
     }
 }
 

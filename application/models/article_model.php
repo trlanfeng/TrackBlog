@@ -16,17 +16,77 @@ class Article_model extends CI_Model
         $query = $this->db->get_where('cms_cms',$filter,$limit,$offset);
         return $query->result_array();
     }
-    public function add($data)
+    public function add($post)
     {
-        $this->db->insert('cms_cms',$data);
+        if ($post['times'] == '')
+        {
+            $time = time();
+        }
+        else
+        {
+            $time = $post['times'];
+        }
+        if (!isset($post['content']))
+        {
+            $post['content'] = "";
+        }
+        $data = array(
+            'name'=>$post['name'],
+            'link'=>$post['link'],
+            'content'=>$post['content'],
+            'cat'=>$post['cat'],
+            'times'=>$time,
+            'orders'=>$post['orders'],
+            'thumbpic'=>$post['thumbpic'],
+            'tags'=>$post['tags'],
+            'keywords'=>$post['keywords'],
+            'description'=>$post['description']
+        );
+        $result = $this->db->insert('cms_cms',$data);
+        if ($result && $this->db->affected_rows() != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-    public function edit($id,$data)
+    public function edit($id,$post)
     {
-        $this->db->update('cms_cms',$data,array('id'=>$id));
+        $data = array(
+            'name'=>$post['name'],
+            'link'=>$post['link'],
+            'content'=>$post['content'],
+            'cat'=>$post['cat'],
+            'times'=>time(),
+            'orders'=>$post['orders'],
+            'thumbpic'=>$post['thumbpic'],
+            'tags'=>$post['tags'],
+            'keywords'=>$post['keywords'],
+            'description'=>$post['description']
+        );
+        $result = $this->db->update('cms_cms',$data,array('id'=>$id));
+        if ($result && $this->db->affected_rows() != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     public function delete($id)
     {
-        $this->db->delete('cms_cms',array('id'=>$id));
+        $result = $this->db->delete('cms_cms',array('id'=>$id));
+        if ($result && $this->db->affected_rows() != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 ?>

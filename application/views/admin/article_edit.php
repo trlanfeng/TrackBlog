@@ -6,7 +6,7 @@
             <small>form</small>
         </div>
     </div>
-    <form class="am-form">
+    <form class="am-form" action="/index.php/admin/article/edit/<?php echo $id; ?>">
         <div class="am-tabs am-margin" data-am-tabs>
 
             <ul class="am-tabs-nav am-nav am-nav-tabs">

@@ -52,28 +52,27 @@
     <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
         <div class="am-offcanvas-bar admin-offcanvas-bar">
             <ul class="am-list admin-sidebar-list">
-                <li><a href="admin-index.html"><span class="am-icon-home"></span> 首页</a></li>
+                <li><a href="/index.php/admin"><span class="am-icon-home"></span> 首页</a></li>
                 <li class="admin-parent">
                     <a class="am-cf" data-am-collapse="{target: '#collapse-managers'}"><span class="am-icon-file"></span> 内容管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-managers">
                         <li><a href="/index.php/admin/article/add" class="am-cf"><span class="am-icon-check"></span> 添加文章</a></li>
                         <li><a href="/index.php/admin/article/show_list"><span class="am-icon-puzzle-piece"></span> 管理文章</a></li>
                         <li><a href="/index.php/admin/category/show_list"><span class="am-icon-th"></span> 管理栏目</a></li>
-                        <li><a href="admin-log.html"><span class="am-icon-calendar"></span> 管理评论</a></li>
-                        <li><a href="admin-404.html"><span class="am-icon-bug"></span> 友情链接</a></li>
+<!--                        <li><a href="admin-log.html"><span class="am-icon-calendar"></span> 管理评论</a></li>-->
+<!--                        <li><a href="admin-404.html"><span class="am-icon-bug"></span> 友情链接</a></li>-->
                     </ul>
                 </li>
                 <li class="admin-parent">
                     <a class="am-cf" data-am-collapse="{target: '#collapse-settings'}"><span class="am-icon-file"></span> 综合设置 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-settings">
-                        <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 网站首页</a></li>
-                        <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 网站设置</a></li>
-                        <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 账户修改</a></li>
-                        <li><a href="admin-log.html"><span class="am-icon-calendar"></span> 导入导出</a></li>
-                        <li><a href="admin-404.html"><span class="am-icon-bug"></span> 注销</a></li>
+                        <li><a href="/" class="am-cf"><span class="am-icon-check"></span> 网站首页</a></li>
+<!--                        <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 网站设置</a></li>-->
+<!--                        <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 账户修改</a></li>-->
+<!--                        <li><a href="admin-log.html"><span class="am-icon-calendar"></span> 导入导出</a></li>-->
                     </ul>
                 </li>
-                <li><a href="admin-table.html"><span class="am-icon-table"></span> 注销</a></li>
+                <li><a href="/index.php/admin/admin/logout"><span class="am-icon-table"></span> 注销</a></li>
             </ul>
 
             <div class="am-panel am-panel-default admin-sidebar-panel">
