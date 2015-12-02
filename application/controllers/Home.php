@@ -2,7 +2,7 @@
 /**
  * 首页
  */
-class Home extends CI_Controller
+class Home extends TB_Controller
 {
 
     public function __construct()

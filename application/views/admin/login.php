@@ -36,7 +36,7 @@
 <?php echo validation_errors(); ?>
 <div class="am-g">
 	<div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
-		<form action="admin/check_login" method="post" class="am-form">
+		<form action="/index.php/admin/admin/check_login" method="post" class="am-form">
 			<label for="email">用户名：</label>
             <input type="text" name="username" />
 			<br>

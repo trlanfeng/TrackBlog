@@ -27,7 +27,7 @@
             <div class="am-panel am-panel-<?php echo $type; ?>">
                 <div class="am-panel-hd am-text-center">信息提示</div>
                 <div class="am-panel-bd">
-                    <p><?php echo $content; ?></p>
+                    <p class="am-text-center"><?php echo $content; ?></p>
                 </div>
                 <div class="am-panel-footer am-text-center">
                     <a href="<?php echo $url; ?>">如果未自动跳转，请点击这里</a>

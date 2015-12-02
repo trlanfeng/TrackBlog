@@ -2,7 +2,7 @@
 /**
 * 栏目管理
 */
-class Category extends CI_Controller
+class Category extends TB_Admin
 {
 	
 	public function __construct()

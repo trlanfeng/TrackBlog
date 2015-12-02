@@ -2,7 +2,7 @@
 /**
 * 标签管理
 */
-class Tag extends Admin
+class Tag extends TB_Admin
 {
 	
 	public function __construct()
