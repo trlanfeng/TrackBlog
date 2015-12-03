@@ -16,17 +16,65 @@ class Category_model extends CI_Model
         $query = $this->db->get_where('cms_category',$filter,$limit,$offset);
         return $query->result_array();
     }
-    public function add()//
+    public function add($post)
     {
-
+        $data = array(
+            'name'=>$post['name'],
+            //'link'=>$post['link'],
+            'nickname'=>$post['nickname'],
+            'fid'=>$post['fid'],
+            'intro'=>$post['intro'],
+            'orders'=>$post['orders'],
+            'status'=>$post['status'],
+            //'thumbpic'=>$post['thumbpic'],
+            'keywords'=>$post['keywords'],
+            'description'=>$post['description']
+        );
+        $result = $this->db->insert('cms_category',$data);
+        if ($result && $this->db->affected_rows() != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-    public function edit()
+    public function edit($id,$post)
     {
-
+        $data = array(
+            'name'=>$post['name'],
+            //'link'=>$post['link'],
+            'nickname'=>$post['nickname'],
+            'fid'=>$post['fid'],
+            'intro'=>$post['intro'],
+            'orders'=>$post['orders'],
+            'status'=>$post['status'],
+            //'thumbpic'=>$post['thumbpic'],
+            'keywords'=>$post['keywords'],
+            'description'=>$post['description']
+        );
+        $result = $this->db->update('cms_category',$data,array('id'=>$id));
+        if ($result && $this->db->affected_rows() != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-    public function delete()
+    public function delete($id)
     {
-
+        $result = $this->db->delete('cms_category',array('id'=>$id));
+        if ($result && $this->db->affected_rows() != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 ?>

@@ -11,14 +11,8 @@
         <div class="am-u-sm-12 am-u-md-6">
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
-                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增
-                    </button>
-                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存
-                    </button>
-                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核
-                    </button>
-                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除
-                    </button>
+                    <a href="/index.php/admin/category/add" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增
+                    </a>
                 </div>
             </div>
         </div>
@@ -79,10 +73,10 @@
                                         <a class="am-btn am-btn-default am-btn-xs" href="<?php echo '/index.php/admin/category/show_one/'.$row['id']; ?>"><span
                                                 class="am-icon-copy"></span> 查看
                                         </a>
-                                        <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="<?php echo '/index.php/admin/category/show_one/'.$row['id']; ?>"><span
+                                        <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="<?php echo '/index.php/admin/category/edit/'.$row['id']; ?>"><span
                                                 class="am-icon-pencil-square-o"></span> 编辑
                                         </a>
-                                        <a class="am-btn am-btn-default am-btn-xs am-text-danger" href="<?php echo '/index.php/admin/category/show_one/'.$row['id']; ?>">
+                                        <a class="am-btn am-btn-default am-btn-xs am-text-danger" href="<?php echo '/index.php/admin/category/delete/'.$row['id']; ?>">
                                             <span class="am-icon-trash-o"></span> 删除
                                         </a>
                                     </div>

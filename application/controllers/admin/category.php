@@ -34,33 +34,57 @@ class Category extends TB_Admin
 	public function add()
 	{
 		if (isset($_POST['submit'])) {
-			$this->category_model->add( $_POST);
+			if ($this->category_model->add($_POST)) {
+				unset($_POST);
+				$this->trackblog->showMessage('success', '栏目添加成功！', '/index.php/admin/category/show_list');
+			} else {
+				$this->trackblog->showMessage('danger', '栏目添加失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风', '/index.php/admin/category/show_list');
+			}
 		} else {
 			$filter = array();
 			$catList = $this->category_model->getList($filter, 0, 0, 'orders ASC');
 			$data['catlist'] = $catList;
+			$data['name'] = "";
+			$data['nickname'] = "";
+			$data['fid'] = 0;
+			$data['intro'] = "";
+			$data['orders'] = "";
+			$data['status'] = 1;
+			$data['keywords'] = "";
+			$data['description'] = "";
+			$data['controlType'] = "add";
 			$this->load->view('admin/header');
-			$this->load->view('admin/category_add',$data);
+			$this->load->view('admin/category_one',$data);
 			$this->load->view('admin/footer');
 		}
 	}
 	public function edit($id)
 	{
 		if (isset($_POST['submit'])) {
-			$this->category_model->edit($id, $_POST);
+			if ($this->category_model->edit($id, $_POST)) {
+				unset($_POST);
+				$this->trackblog->showMessage('success', '栏目修改成功！', '/index.php/admin/category/show_list');
+			} else {
+				$this->trackblog->showMessage('danger', '栏目修改失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风', '/index.php/admin/category/show_list');
+			}
 		} else {
 			$data = $this->category_model->getOne($id);
 			$filter = array();
 			$catList = $this->category_model->getList($filter, 0, 0, 'orders ASC');
 			$data['catlist'] = $catList;
+			$data['controlType'] = "edit";
 			$this->load->view('admin/header');
-			$this->load->view('admin/category_edit', $data);
+			$this->load->view('admin/category_one', $data);
 			$this->load->view('admin/footer');
 		}
 	}
 	public function delete($id)
 	{
-		$this->category_model->delete($id);
+		if ($this->category_model->delete($id)) {
+			$this->trackblog->showMessage('success', '栏目删除成功！', '/index.php/admin/category/show_list');
+		} else {
+			$this->trackblog->showMessage('danger', '栏目删除失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风', '/index.php/admin/category/show_list');
+		}
 	}
 }
 ?>

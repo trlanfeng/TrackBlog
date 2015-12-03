@@ -57,8 +57,21 @@ class Article extends TB_Admin
             $filter = array();
             $catList = $this->category_model->getList($filter, 0, 0, 'orders ASC');
             $data['catlist'] = $catList;
+            $data['name'] = "";
+            $data['link'] = "";
+            $data['content'] = "";
+            $data['cat'] = 0;
+            $data['allowcmt'] = 0;
+            $data['orders'] = 0;
+            $data['status'] = 1;
+            $data['thumbpic'] = "";
+            $data['slug'] = array();
+            $data['tags'] = "";
+            $data['keywords'] = "";
+            $data['description'] = "";
+            $data['controlType'] = "add";
             $this->load->view('admin/header');
-            $this->load->view('admin/article_add', $data);
+            $this->load->view('admin/article_one', $data);
             $this->load->view('admin/footer');
         }
     }
@@ -74,11 +87,13 @@ class Article extends TB_Admin
             }
         } else {
             $data = $this->article_model->getOne($id);
+            $data['slug'] = explode(',',$data['slug']);
             $filter = array();
             $catList = $this->category_model->getList($filter, 0, 0, 'orders ASC');
             $data['catlist'] = $catList;
+            $data['controlType'] = "edit";
             $this->load->view('admin/header');
-            $this->load->view('admin/article_edit', $data);
+            $this->load->view('admin/article_one', $data);
             $this->load->view('admin/footer');
         }
     }
