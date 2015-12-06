@@ -55,4 +55,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['admin'] = 'admin/admin';
 $route['article/(:num)'] = 'article/show/$1';
-$route['default_controller'] = 'home/index';
+$route['category/(:num)'] = 'category/showlist/$1';
+$route['default_controller'] = 'index/index';

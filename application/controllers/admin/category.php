@@ -36,9 +36,9 @@ class Category extends TB_Admin
 		if (isset($_POST['submit'])) {
 			if ($this->category_model->add($_POST)) {
 				unset($_POST);
-				$this->trackblog->showMessage('success', '栏目添加成功！', '/index.php/admin/category/show_list');
+				$this->trackblog->showMessage('success', '栏目添加成功！', '/admin/category/show_list');
 			} else {
-				$this->trackblog->showMessage('danger', '栏目添加失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风', '/index.php/admin/category/show_list');
+				$this->trackblog->showMessage('danger', '栏目添加失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风', '/admin/category/show_list');
 			}
 		} else {
 			$filter = array();
@@ -63,9 +63,9 @@ class Category extends TB_Admin
 		if (isset($_POST['submit'])) {
 			if ($this->category_model->edit($id, $_POST)) {
 				unset($_POST);
-				$this->trackblog->showMessage('success', '栏目修改成功！', '/index.php/admin/category/show_list');
+				$this->trackblog->showMessage('success', '栏目修改成功！', '/admin/category/show_list');
 			} else {
-				$this->trackblog->showMessage('danger', '栏目修改失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风', '/index.php/admin/category/show_list');
+				$this->trackblog->showMessage('danger', '栏目修改失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风', '/admin/category/show_list');
 			}
 		} else {
 			$data = $this->category_model->getOne($id);
@@ -81,9 +81,9 @@ class Category extends TB_Admin
 	public function delete($id)
 	{
 		if ($this->category_model->delete($id)) {
-			$this->trackblog->showMessage('success', '栏目删除成功！', '/index.php/admin/category/show_list');
+			$this->trackblog->showMessage('success', '栏目删除成功！', '/admin/category/show_list');
 		} else {
-			$this->trackblog->showMessage('danger', '栏目删除失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风', '/index.php/admin/category/show_list');
+			$this->trackblog->showMessage('danger', '栏目删除失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风', '/admin/category/show_list');
 		}
 	}
 }

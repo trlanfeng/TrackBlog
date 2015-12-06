@@ -14,6 +14,6 @@ class TrackBlog
         $data['type'] = $type;
         $data['content'] = $content;
         $data['url'] = $url;
-        $this->CI->load->view('showmessage', $data);
+        $this->CI->load->view('admin/showmessage', $data);
     }
 }

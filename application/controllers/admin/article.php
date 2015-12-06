@@ -49,9 +49,9 @@ class Article extends TB_Admin
         if (isset($_POST['submit'])) {
             if ($this->article_model->add($_POST)) {
                 unset($_POST);
-                $this->trackblog->showMessage('success', '数据添加成功！', '/index.php/admin/article/show_list');
+                $this->trackblog->showMessage('success', '数据添加成功！', '/admin/article/show_list');
             } else {
-                $this->trackblog->showMessage('danger', '数据添加失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风', '/index.php/admin/article/show_list');
+                $this->trackblog->showMessage('danger', '数据添加失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风', '/admin/article/show_list');
             }
         } else {
             $filter = array();
@@ -81,9 +81,9 @@ class Article extends TB_Admin
         if (isset($_POST['submit'])) {
             if ($this->article_model->edit($id, $_POST)) {
                 unset($_POST);
-                $this->trackblog->showMessage('success', '数据修改成功！', '/index.php/admin/article/show_list');
+                $this->trackblog->showMessage('success', '数据修改成功！', '/admin/article/show_list');
             } else {
-                $this->trackblog->showMessage('danger', '数据修改失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风', '/index.php/admin/article/show_list');
+                $this->trackblog->showMessage('danger', '数据修改失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风', '/admin/article/show_list');
             }
         } else {
             $data = $this->article_model->getOne($id);
@@ -101,9 +101,9 @@ class Article extends TB_Admin
     public function delete($id)
     {
         if ($this->article_model->delete($id)) {
-            $this->trackblog->showMessage('success', '数据删除成功！', '/index.php/admin/article/show_list');
+            $this->trackblog->showMessage('success', '数据删除成功！', '/admin/article/show_list');
         } else {
-            $this->trackblog->showMessage('danger', '数据删除失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风', '/index.php/admin/article/show_list');
+            $this->trackblog->showMessage('danger', '数据删除失败，未知错误！如需帮助，请联系开发者。微博：@孤月蓝风', '/admin/article/show_list');
         }
     }
 

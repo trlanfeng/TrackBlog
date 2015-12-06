@@ -30,3 +30,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /application/views/templates
 /public/images
 /public/css/index.css
+/public/css/index.less
