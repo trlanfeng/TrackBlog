@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 文章显示
  */
@@ -11,26 +12,32 @@ class Article extends CI_Controller
         $this->load->model('article_model');
         $this->load->model('category_model');
     }
+
     public function index($id)
     {
         $this->show($id);
     }
+
     public function show($id)
     {
         $data = $this->article_model->getOne($id);
+        $data['datetime'] = date('Y-m-d', $data['times']);
+        $data['tagarray'] = explode(',',$data['tags']);
         $filter = array();
         $catList = $this->category_model->getList($filter, 0, 0, 'orders ASC');
         $data['catlist'] = $catList;
         $data['contentType'] = "article";
         $data['catname'] = $this->getCatnameById($data['id']);
-        $this->load->view('templates/header',$data);
-        $this->load->view('templates/article',$data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/article', $data);
         $this->load->view('templates/footer');
     }
+
     public function getCatnameById($id)
     {
         $cat = $this->category_model->getOne($id);
         return $cat['name'];
     }
 }
+
 ?>

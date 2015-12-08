@@ -20,11 +20,6 @@ class Category extends CI_Controller
 
     public function showlist($id, $page = 1)
     {
-        $data = $this->category_model->getOne($id);
-        $filter = array();
-        $catList = $this->category_model->getList($filter, 0, 0, 'orders ASC');
-        $data['cat'] = $data['id'];
-        $data['catlist'] = $catList;
         $data['cat'] = $id;
         $data['uppage'] = $page - 1;
         if ($data['uppage'] <= 0)
@@ -32,10 +27,25 @@ class Category extends CI_Controller
             $data['uppage'] = 1;
         }
         $data['downpage'] = $page + 1;
+        $filter = array();
+        $catList = $this->category_model->getList($filter, 0, 0, 'orders ASC');
+        $data['catlist'] = $catList;
         $filter = array(
-            "cat" => $id
+            "cat"=>$id
         );
-        $data['articleList'] = $this->article_model->getList($filter, 10, ($data['uppage'] - 1) * 10, "orders ASC");
+        $articleList= $this->article_model->getList($filter,10,($page - 1) * 10,"id DESC");
+        foreach ($articleList as $article) {
+            $article['datetime'] = date('Y-m-d' ,$article['times']);
+            $article['catname'] = $this->getCatnameById($article['cat']);
+            $article['tagarray'] = array();
+            $tagarray = explode(',', $article['tags']);
+            foreach ($tagarray as $tag) {
+                $tagOne['name'] = $tag;
+                $tagOne['url'] = '/tag/'.$tag;
+                $article['tagarray'][] = $tagOne;
+            }
+            $data['articleList'][] = $article;
+        }
         $data['catname'] = $this->getCatnameById($id);
         $data['contentType'] = "category";
         $this->load->view('templates/header', $data);

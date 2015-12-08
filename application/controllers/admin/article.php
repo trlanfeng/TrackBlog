@@ -36,7 +36,7 @@ class Article extends TB_Admin
         $articleList = $this->article_model->getList($filter, $eachpage, ($page - 1) * $eachpage, "id DESC");
         for ($i = 0; $i < count($articleList); $i++) {
             $articleList[$i]['catname'] = $this->getCatnameById($articleList[$i]['cat']);
-            $articleList[$i]['datatime'] = date('Y-m-d', $articleList[$i]['times']);
+            $articleList[$i]['datetime'] = date('Y-m-d', $articleList[$i]['times']);
         }
         $data['articleList'] = $articleList;
         $this->load->view('admin/header');

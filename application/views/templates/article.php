@@ -9,7 +9,7 @@
                     栏目：<a href="/category/<?php echo $cat; ?>"><?php echo $catname; ?></a>&nbsp;&nbsp;&nbsp;&nbsp;
                     标签：
                     <?php foreach ($tagarray as $tag) { ?>
-                        <a href="<?php echo $tag['url']; ?>"><?php echo $tag['name']; ?></a>&nbsp;&nbsp;
+                        <a href="/tag/<?php echo $tag; ?>"><?php echo $tag; ?></a>&nbsp;&nbsp;
                     <?php } ?>
                 </p>
                 <div class="am-g blog-content">

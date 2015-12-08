@@ -59,7 +59,7 @@
                                 <a href="<?php echo '/index.php/admin/article/edit/' . $row['id']; ?>"><?php echo $row['name']; ?></a>
                             </td>
                             <td><?php echo $row['catname']; ?></td>
-                            <td class="am-hide-sm-only"><?php echo $row['datatime']; ?></td>
+                            <td class="am-hide-sm-only"><?php echo $row['datetime']; ?></td>
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
