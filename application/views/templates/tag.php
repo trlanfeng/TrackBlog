@@ -27,8 +27,8 @@
             <hr>
         <?php } ?>
         <ul class="am-pagination blog-pagination">
-            <li class="am-pagination-prev"><a href="/category/<?php echo $cat.'/'.$uppage; ?>">&laquo; 上一页</a></li>
-            <li class="am-pagination-next"><a href="/category/<?php echo $cat.'/'.$downpage; ?>">下一页 &raquo;</a></li>
+            <li class="am-pagination-prev"><a href="/tag/<?php echo $tagname.'/'.$uppage; ?>">&laquo; 上一页</a></li>
+            <li class="am-pagination-next"><a href="/tag/<?php echo $tagname.'/'.$downpage; ?>">下一页 &raquo;</a></li>
         </ul>
     </div>
     <?php include 'sidebar.php'; ?>

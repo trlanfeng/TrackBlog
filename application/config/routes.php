@@ -58,4 +58,6 @@ $route['article/(:any)'] = 'article/show/$1';
 $route['index/(:any)'] = 'index/index/$1';
 $route['category/(:num)'] = 'category/showlist/$1';
 $route['category/(:num)/(:num)'] = 'category/showlist/$1/$2';
+$route['tag/(:any)'] = 'tag/showlist/$1';
+$route['tag/(:any)/(:num)'] = 'tag/showlist/$1/$2';
 $route['default_controller'] = 'index/index';

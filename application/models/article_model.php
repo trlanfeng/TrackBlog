@@ -19,6 +19,13 @@ class Article_model extends CI_Model
         $query = $this->db->get_where('cms_cms', $filter, $limit, $offset);
         return $query->result_array();
     }
+    public function getListByTag($tagname, $limit = 0, $offset = 0, $order = "")
+    {
+        $this->db->order_by($order);
+        $this->db->like('tags',$tagname);
+        $query = $this->db->get_where('cms_cms',array() , $limit, $offset);
+        return $query->result_array();
+    }
 
     public function add($post)
     {
