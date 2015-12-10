@@ -1,4 +1,27 @@
 <?php
+    //just for me , 博客迁移后的301设置 by trlanfeng @ 2015.12.11
+    $url = '';
+    $i = 0;
+    if (isset($_GET['cat'])) {
+        if (isset($_GET['id'])) {
+            $url = 'http://'.$_SERVER['HTTP_HOST'].'/article/'.$_GET['id'];
+        } else {
+            $url = 'http://'.$_SERVER['HTTP_HOST'].'/category/'.$_GET['cat'];
+        }
+        $i++;
+    } else {
+        $url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    }
+    if (stripos($url, 'www')) {
+        $url = str_ireplace('http://www.', 'http://', $url);
+        $i++;
+    }
+    if ($i > 0) {
+        Header("HTTP/1.1 301 Moved Permanently");
+        Header("Location: " . $url);
+    }
+?>
+<?php
 /**
  * CodeIgniter
  *
