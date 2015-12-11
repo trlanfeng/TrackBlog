@@ -20,10 +20,10 @@ class Category extends CI_Controller
 
     public function showlist($id, $page = 1)
     {
+        $data = $this->category_model->getOne($id);
         $data['cat'] = $id;
         $data['uppage'] = $page - 1;
-        if ($data['uppage'] <= 0)
-        {
+        if ($data['uppage'] <= 0) {
             $data['uppage'] = 1;
         }
         $data['downpage'] = $page + 1;
@@ -31,26 +31,26 @@ class Category extends CI_Controller
         $catList = $this->category_model->getList($filter, 0, 0, 'orders ASC');
         $data['catlist'] = $catList;
         $filter = array(
-            "cat"=>$id
+            "cat" => $id
         );
-        $articleList= $this->article_model->getList($filter,10,($page - 1) * 10,"id DESC");
+        $articleList = $this->article_model->getList($filter, 10, ($page - 1) * 10, "id DESC");
         foreach ($articleList as $article) {
-            $article['datetime'] = date('Y-m-d' ,$article['times']);
+            $article['datetime'] = date('Y-m-d', $article['times']);
             $article['catname'] = $this->getCatnameById($article['cat']);
             $article['tagarray'] = array();
             $tagarray = explode(',', $article['tags']);
             foreach ($tagarray as $tag) {
                 $tagOne['name'] = $tag;
-                $tagOne['url'] = '/tag/'.$tag;
+                $tagOne['url'] = '/tag/' . $tag;
                 $article['tagarray'][] = $tagOne;
             }
             $data['articleList'][] = $article;
         }
         $data['catname'] = $this->getCatnameById($id);
         $data['contentType'] = "category";
-        $this->load->view('templates/'.TEMPLATES.'/header', $data);
-        $this->load->view('templates/'.TEMPLATES.'/category', $data);
-        $this->load->view('templates/'.TEMPLATES.'/footer');
+        $this->load->view('templates/' . TEMPLATES . '/header', $data);
+        $this->load->view('templates/' . TEMPLATES . '/category', $data);
+        $this->load->view('templates/' . TEMPLATES . '/footer');
     }
 
     public function getCatnameById($id)

@@ -20,6 +20,7 @@ class Tag extends CI_Controller
 
     public function showlist($tag, $page = 1)
     {
+        $data['cat'] = 0;
         $data['tagname'] = $tag;
         $data['uppage'] = $page - 1;
         if ($data['uppage'] <= 0)

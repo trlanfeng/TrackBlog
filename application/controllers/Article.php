@@ -27,7 +27,7 @@ class Article extends CI_Controller
         $catList = $this->category_model->getList($filter, 0, 0, 'orders ASC');
         $data['catlist'] = $catList;
         $data['contentType'] = "article";
-        $data['catname'] = $this->getCatnameById($data['id']);
+        $data['catname'] = $this->getCatnameById($data['cat']);
         $this->load->view('templates/'.TEMPLATES.'/header', $data);
         $this->load->view('templates/'.TEMPLATES.'/article', $data);
         $this->load->view('templates/'.TEMPLATES.'/footer');
