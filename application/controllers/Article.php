@@ -28,9 +28,9 @@ class Article extends CI_Controller
         $data['catlist'] = $catList;
         $data['contentType'] = "article";
         $data['catname'] = $this->getCatnameById($data['id']);
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/article', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/'.TEMPLATES.'/header', $data);
+        $this->load->view('templates/'.TEMPLATES.'/article', $data);
+        $this->load->view('templates/'.TEMPLATES.'/footer');
     }
 
     public function getCatnameById($id)

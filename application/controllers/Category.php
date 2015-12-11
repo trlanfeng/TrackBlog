@@ -48,9 +48,9 @@ class Category extends CI_Controller
         }
         $data['catname'] = $this->getCatnameById($id);
         $data['contentType'] = "category";
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/category', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/'.TEMPLATES.'/header', $data);
+        $this->load->view('templates/'.TEMPLATES.'/category', $data);
+        $this->load->view('templates/'.TEMPLATES.'/footer');
     }
 
     public function getCatnameById($id)

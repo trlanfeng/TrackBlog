@@ -44,9 +44,9 @@ class Tag extends CI_Controller
             $data['articleList'][] = $article;
         }
         $data['contentType'] = "tag";
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/tag', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/'.TEMPLATES.'/header', $data);
+        $this->load->view('templates/'.TEMPLATES.'/tag', $data);
+        $this->load->view('templates/'.TEMPLATES.'/footer');
     }
 
     public function getCatnameById($id)

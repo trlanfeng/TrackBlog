@@ -22,6 +22,9 @@
     }
 ?>
 <?php
+    define('TEMPLATES', 'SimpleBlueV5');
+?>
+<?php
 /**
  * CodeIgniter
  *

@@ -37,9 +37,9 @@ class Index extends CI_Controller
             $data['articleList'][] = $article;
         }
         $data['contentType'] = "index";
-        $this->load->view('templates/header',$data);
-        $this->load->view('templates/index',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/'.TEMPLATES.'/header',$data);
+        $this->load->view('templates/'.TEMPLATES.'/index',$data);
+        $this->load->view('templates/'.TEMPLATES.'/footer');
     }
     public function getCatnameById($id)
     {
