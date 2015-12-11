@@ -22,7 +22,7 @@
     }
 ?>
 <?php
-    define('TEMPLATES', 'SimpleBlueV5');
+    define('TEMPLATES', 'Default');
 ?>
 <?php
 /**
