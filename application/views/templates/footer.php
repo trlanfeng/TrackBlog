@@ -1,7 +1,7 @@
 
 <footer class="blog-footer">
-    <p>blog template<br/>
-        <small>© Copyright XXX. by the AmazeUI Team.</small>
+    <p>TrackBlog<br/>
+        <small>Desgined By Trlanfeng</small>
     </p>
 </footer>
 
