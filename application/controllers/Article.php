@@ -27,7 +27,8 @@ class Article extends CI_Controller
         $catList = $this->category_model->getList($filter, 0, 0, 'orders ASC');
         $data['catlist'] = $catList;
         $data['contentType'] = "article";
-        $data['catname'] = $this->getCatnameById($data['cat']);
+        $data['catname'] = $this->getCatnameById($data['cat'])['name'];
+        $data['catnickname'] = $this->getCatnameById($data['cat'])['nickname'];
         $this->load->view('templates/'.TEMPLATES.'/header', $data);
         $this->load->view('templates/'.TEMPLATES.'/article', $data);
         $this->load->view('templates/'.TEMPLATES.'/footer');
@@ -35,8 +36,7 @@ class Article extends CI_Controller
 
     public function getCatnameById($id)
     {
-        $cat = $this->category_model->getOne($id);
-        return $cat['name'];
+        return $cat = $this->category_model->getOne($id);
     }
 }
 

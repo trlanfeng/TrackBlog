@@ -34,7 +34,8 @@ class Tag extends CI_Controller
         $articleList= $this->article_model->getListByTag($tag,10,($page - 1) * 10,"id DESC");
         foreach ($articleList as $article) {
             $article['datetime'] = date('Y-m-d' ,$article['times']);
-            $article['catname'] = $this->getCatnameById($article['cat']);
+            $article['catname'] = $this->getCatnameById($article['cat'])['name'];
+            $article['catnickname'] = $this->getCatnameById($article['cat'])['nickname'];
             $article['tagarray'] = array();
             $tagarray = explode(',', $article['tags']);
             foreach ($tagarray as $tag) {
@@ -52,8 +53,7 @@ class Tag extends CI_Controller
 
     public function getCatnameById($id)
     {
-        $cat = $this->category_model->getOne($id);
-        return $cat['name'];
+        return $cat = $this->category_model->getOne($id);
     }
 }
 

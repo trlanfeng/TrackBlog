@@ -10,6 +10,11 @@ class Category_model extends CI_Model
         $query = $this->db->get_where('cms_category',array('id'=>$id));
         return $query->row_array();
     }
+    public function getOneByCatName($catname)
+    {
+        $query = $this->db->get_where('cms_category',array('nickname'=>$catname));
+        return $query->row_array();
+    }
     public function getList($filter = array(),$limit = 0,$offset = 0,$order ="")
     {
         $this->db->order_by($order);
