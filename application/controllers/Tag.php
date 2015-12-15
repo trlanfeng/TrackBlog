@@ -13,13 +13,14 @@ class Tag extends CI_Controller
         $this->load->model('article_model');
     }
 
-    public function index($id)
+    public function index($tag)
     {
-        $this->showlist($id);
+        $this->showlist($tag);
     }
 
     public function showlist($tag, $page = 1)
     {
+        $tag = urldecode($tag);
         $data['cat'] = 0;
         $data['tagname'] = $tag;
         $data['uppage'] = $page - 1;
