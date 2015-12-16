@@ -44,7 +44,7 @@ class Admin extends CI_Controller
                         $_SESSION['username'] = $_POST['username'];
                         redirect('/admin');
                     } else {
-
+                        $this->login();
                     }
                 }
             } else {
