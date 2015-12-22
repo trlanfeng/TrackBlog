@@ -50,7 +50,7 @@ class Article_model extends CI_Model
             'link' => $post['link'],
             'content' => $post['content'],
             'cat' => $post['cat'],
-            //'times'=>$time,
+            'times'=>time(),
             'allowcmt' => $post['allowcmt'],
             'slug' => $post['slug'],
             'orders' => $post['orders'],
