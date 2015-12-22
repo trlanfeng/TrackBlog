@@ -11,7 +11,7 @@
         <div class="am-u-sm-12 am-u-md-6">
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
-                    <a href="/index.php/admin/category/add" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增
+                    <a href="/admin/category/add" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增
                     </a>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                         <tr>
                             <td><input type="checkbox"/></td>
                             <td><?php echo $row['id']; ?></td>
-                            <td><a href="<?php echo '/index.php/admin/category/edit/'.$row['id']; ?>"><?php echo $row['name']; ?></a></td>
+                            <td><a href="<?php echo '/admin/category/edit/'.$row['id']; ?>"><?php echo $row['name']; ?></a></td>
                             <td><?php echo $row['nickname']; ?></td>
                             <td><?php echo $row['intro']; ?></td>
                             <td><?php echo $row['status']; ?></td>
@@ -70,13 +70,13 @@
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
-                                        <a class="am-btn am-btn-default am-btn-xs" href="<?php echo '/index.php/admin/category/show_one/'.$row['id']; ?>"><span
+                                        <a class="am-btn am-btn-default am-btn-xs" href="<?php echo '/category/'.$row['nickname']; ?>"><span
                                                 class="am-icon-copy"></span> 查看
                                         </a>
-                                        <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="<?php echo '/index.php/admin/category/edit/'.$row['id']; ?>"><span
+                                        <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="<?php echo '/admin/category/edit/'.$row['id']; ?>"><span
                                                 class="am-icon-pencil-square-o"></span> 编辑
                                         </a>
-                                        <a class="am-btn am-btn-default am-btn-xs am-text-danger" href="<?php echo '/index.php/admin/category/delete/'.$row['id']; ?>">
+                                        <a class="am-btn am-btn-default am-btn-xs am-text-danger" href="<?php echo '/admin/category/delete/'.$row['id']; ?>">
                                             <span class="am-icon-trash-o"></span> 删除
                                         </a>
                                     </div>

@@ -11,7 +11,7 @@
         <div class="am-u-sm-12 am-u-md-6">
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
-                    <a href="/index.php/admin/article/add" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增
+                    <a href="/admin/article/add" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增
                     </a>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                             <td><input type="checkbox"/></td>
                             <td><?php echo $row['id']; ?></td>
                             <td>
-                                <a href="<?php echo '/index.php/admin/article/edit/' . $row['id']; ?>"><?php echo $row['name']; ?></a>
+                                <a href="<?php echo '/admin/article/edit/' . $row['id']; ?>"><?php echo $row['name']; ?></a>
                             </td>
                             <td><?php echo $row['catname']; ?></td>
                             <td class="am-hide-sm-only"><?php echo $row['datetime']; ?></td>
@@ -64,15 +64,15 @@
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
                                         <a class="am-btn am-btn-default am-btn-xs"
-                                           href="<?php echo '/index.php/admin/article/show_one/' . $row['id']; ?>"><span
+                                           href="<?php echo '/article/' . $row['id']; ?>"><span
                                                 class="am-icon-copy"></span> 查看
                                         </a>
                                         <a class="am-btn am-btn-default am-btn-xs am-text-secondary"
-                                           href="<?php echo '/index.php/admin/article/edit/' . $row['id']; ?>"><span
+                                           href="<?php echo '/admin/article/edit/' . $row['id']; ?>"><span
                                                 class="am-icon-pencil-square-o"></span> 编辑
                                         </a>
                                         <a class="am-btn am-btn-default am-btn-xs am-text-danger"
-                                           href="<?php echo '/index.php/admin/article/delete/' . $row['id']; ?>">
+                                           href="<?php echo '/admin/article/delete/' . $row['id']; ?>">
                                             <span class="am-icon-trash-o"></span> 删除
                                         </a>
                                     </div>
