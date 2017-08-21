@@ -15,15 +15,15 @@ class CreateCategorysTable extends Migration
     {
         Schema::create('categorys',function (Blueprint $table) {
             $table->increments('id');
-            $table->string('keywords');
-            $table->string('description');
+            $table->string('keywords')->nullable();
+            $table->string('description')->nullable();
             $table->string('title');
-            $table->string('thumb_url');
+            $table->string('thumb_url')->nullable();
             $table->integer('pid');
-            $table->integer('orders');
-            $table->string('alias');
-            $table->tinyInteger('status');
-            $table->string('link');
+            $table->integer('orders')->nullable();
+            $table->string('alias')->nullable();
+            $table->tinyInteger('status')->default(1);
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }

@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/',function(){
+    return 'hello world !';
 });
+
+Route::get('/posts'             ,'\App\Http\Controllers\ArticleController@index');
+Route::get('/posts/{post}'      ,'\App\Http\Controllers\ArticleController@show');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

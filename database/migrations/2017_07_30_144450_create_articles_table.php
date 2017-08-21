@@ -15,19 +15,19 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles',function (Blueprint $table) {
             $table->increments('id');
-            $table->string('keywords');
-            $table->string('description');
+            $table->string('keywords')->nullable();
+            $table->string('description')->nullable();
             $table->string('title');
-            $table->text('content');
-            $table->string('thumb_url');
+            $table->text('content')->nullable();
+            $table->string('thumb_url')->nullable();
             $table->integer('category_id');
-            $table->integer('orders');
-            $table->integer('allow_comment');
-            $table->integer('author_id');
-            $table->string('alias');
-            $table->string('tags');
-            $table->tinyInteger('status');
-            $table->string('link');
+            $table->integer('orders')->nullable();
+            $table->integer('allow_comment')->nullable();
+            $table->integer('author_id')->nullable();
+            $table->string('alias')->nullable();
+            $table->string('tags')->nullable();
+            $table->tinyInteger('status')->default(1);
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }
