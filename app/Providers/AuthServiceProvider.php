@@ -16,6 +16,15 @@ class AuthServiceProvider extends ServiceProvider
         'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
+    protected $views = [
+        'auth/login.stub' => 'auth/login2.blade.php',
+        'auth/register.stub' => 'auth/register.blade.php',
+        'auth/passwords/email.stub' => 'auth/passwords/email.blade.php',
+        'auth/passwords/reset.stub' => 'auth/passwords/reset.blade.php',
+        'layouts/app.stub' => 'layouts/app.blade.php',
+        'home.stub' => 'home.blade.php',
+    ];
+
     /**
      * Register any authentication / authorization services.
      *

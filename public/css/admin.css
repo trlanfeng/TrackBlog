@@ -1,0 +1,31 @@
+html,
+body {
+  height: 100%;
+}
+.table .th_small {
+  width: 80px !important;
+}
+.admin-app {
+  display: flex;
+  height: 100%;
+  align-items: stretch;
+}
+.admin-app .sidebar {
+  width: 300px;
+  background-color: #333;
+}
+.admin-app .sidebar .menu .tree-menu {
+  border: none;
+}
+.admin-app .sidebar .menu .tree-menu li {
+  border-top: 1px solid #3F3F3F;
+}
+.admin-app .sidebar .menu .tree-menu li a {
+  color: #EEEEEE;
+  border: none;
+  padding: 15px;
+}
+.admin-app .page {
+  flex: 1;
+  background-color: white;
+}
