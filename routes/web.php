@@ -28,12 +28,16 @@ Route::group(['middleware'=>'auth','prefix'=>'admin'],function (){
     Route::get('/','\App\Http\Controllers\Admin\AdminController@index');
 
     Route::get('/categorys/','\App\Http\Controllers\Admin\CategoryController@index');
-    Route::get('/category/:title','\App\Http\Controllers\Admin\ArticleController@show');
+    Route::get('/category/{category?}','\App\Http\Controllers\Admin\CategoryController@show');
+    Route::post('/category/','\App\Http\Controllers\Admin\CategoryController@edit');
+    Route::put('/category/{category}','\App\Http\Controllers\Admin\CategoryController@edit');
+    Route::delete('/category/{category}','\App\Http\Controllers\Admin\CategoryController@delete');
 
     Route::get('/articles/','\App\Http\Controllers\Admin\ArticleController@index');
     Route::get('/article/{article?}','\App\Http\Controllers\Admin\ArticleController@show');
-    Route::post('/article/{article?}','\App\Http\Controllers\Admin\ArticleController@edit');
-    Route::delete('/article/:id','\App\Http\Controllers\Admin\ArticleController@delete');
+    Route::post('/article/','\App\Http\Controllers\Admin\ArticleController@edit');
+    Route::put('/article/{article}','\App\Http\Controllers\Admin\ArticleController@edit');
+    Route::delete('/article/{article}','\App\Http\Controllers\Admin\ArticleController@delete');
 });
 
 Auth::routes();

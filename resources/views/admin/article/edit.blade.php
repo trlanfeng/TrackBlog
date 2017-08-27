@@ -1,7 +1,11 @@
 @extends('admin.layout')
 
 @section('page')
-    <form action="">
+    <form action="{{isset($article->id) ? url('/admin/article/'.$article->id) : url('/admin/article')}}" method="POST">
+        {{csrf_field()}}
+        @if(isset($article->id))
+            {{method_field('PUT')}}
+        @endif
         <div class="form-group">
             <label for="title">栏目：</label>
             <select data-placeholder="选择一个宠物..." class="chosen-select form-control" tabindex="2">
@@ -9,6 +13,10 @@
                 <option value="{{$category->id}}">{{$category->title}}</option>
                 @endforeach
             </select>
+        </div>
+        <div class="form-group">
+            <label for="">栏目</label>
+            <input type="text" class="form-control" name="category_id">
         </div>
         <div class="form-group">
             <label for="title">标题：</label>
@@ -54,6 +62,14 @@
             </select>
         </div>
         <div class="form-group">
+            <label for="">标签</label>
+            <input type="text" class="form-control" name="tags">
+        </div>
+        <div class="form-group">
+            <label for="">状态</label>
+            <input type="text" class="form-control" name="status">
+        </div>
+        <div class="form-group">
             <label for="title">链接：</label>
             <input type="text" class="form-control" id="link" name="link" value="{{$article->link or ''}}">
         </div>
@@ -61,6 +77,8 @@
             <label for="title">发布时间：</label>
             <input type="text" class="form-control publish_time" id="created_at" name="created_at" value="{{$article->created_at or ''}}">
         </div>
+        <button type="submit" class="btn btn-primary">保存</button>
+        <button type="reset" class="btn btn-danger">重置</button>
     </form>
 @endsection
 

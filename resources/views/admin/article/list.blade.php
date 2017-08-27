@@ -17,17 +17,14 @@
                     <td>{{$article->title}}</td>
                     <td>{{$article->status}}</td>
                     <td>
-                        <a href="#"><i class="icon-ok-sign"></i></a>
-                        &nbsp;
+                        <a href="{{url('/admin/article/'.$article->id)}}"><i class="icon-ok-sign"></i></a>
                         <a href="#" class="text-danger"><i class="icon-trash"></i></a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    <ul>
-
-    </ul>
+    {{$articles->links('vendor/pagination/zui')}}
 @endsection
 
 @section('script')

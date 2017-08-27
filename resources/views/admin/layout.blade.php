@@ -11,8 +11,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    {{--<link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">--}}
     <link href="{{ asset('zui/css/zui.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('zui/css/zui-theme.min.css') }}" rel="stylesheet">
+    {{--<link href="{{ asset('zui/css/zui-theme.min.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -25,8 +26,8 @@
                     <li class="open">
                         <a href="#"><i class="icon icon-time"></i>内容管理</a>
                         <ul>
-                            <li><a href="{{url('/articles/')}}">文章</a></li>
-                            <li><a href="{{url('/categorys/')}}">栏目</a></li>
+                            <li><a href="{{url('/admin/articles/')}}">文章</a></li>
+                            <li><a href="{{url('/admin/categorys/')}}">栏目</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -42,6 +43,7 @@
 
 <!-- Scripts -->
 <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+{{--<script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>--}}
 <script src="{{ asset('zui/js/zui.min.js') }}"></script>
 @yield('script')
 </body>
