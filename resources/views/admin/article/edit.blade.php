@@ -34,6 +34,14 @@
             <label for="title">内容：</label>
             <input type="text" class="form-control" id="content" name="content" value="{{$article->content or ''}}">
         </div>
+        <script id="container" name="content" type="text/plain">
+            这里写你的初始化内容
+        </script>
+        <script type="text/javascript" src="{{asset('ueditor/ueditor.config.js')}}"></script>
+        <script type="text/javascript" src="{{asset('ueditor/ueditor.all.js')}}"></script>
+        <script type="text/javascript">
+            var ue = UE.getEditor('container');
+        </script>
         <div class="form-group">
             <label for="title">缩略图：</label>
             <input type="text" class="form-control" id="thumb_url" name="thumb_url" value="{{$article->thumb_url or ''}}">

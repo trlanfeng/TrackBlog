@@ -1,29 +1,72 @@
 html,body {
     height: 100%;
+    background-color: #E9ECF3;
 }
 .table {
     .th_small {
         width: 80px !important;
+    }
+    td,th {
+        padding: 15px;
+        background-color: white !important;
+        border-bottom: 1px solid #F5F5F5 !important;
+    }
+    tr.active {
+        td,th {
+            background-color: #F2F6F9 !important;
+        }
     }
 }
 
 .admin-app {
     display: flex;
     height: 100%;
-    align-items: stretch;
     .sidebar {
+        min-width: 300px;
         width: 300px;
-        background-color: #333;
         .menu {
+            margin: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 0px inset;
             .tree-menu {
                 border:none;
+                overflow: visible;
                 li {
-                    //height: 40px;
-                    border-top: 1px solid #3F3F3F;
+                    .list-toggle {
+                        top: 13px;
+                    }
+                    &.open > a {
+                        border-left: 3px solid rgb(92, 154, 207) !important;
+                        margin-left: -3px;
+                    }
+                    &.active {
+                        a {
+                            color: #5b9bd1;
+                            background-color: #f2f6f9;
+                        }
+                    }
                     a {
-                        color: #EEEEEE;
+                        color: #485a6a;
                         border: none;
                         padding: 15px;
+                        &:hover {
+                            color: #5b9bd1;
+                            background-color: #f2f6f9;
+                        }
+                        &:focus {
+                            background-color: white;
+                        }
+                        i {
+                            margin-right: 5px;
+                        }
+                    }
+                    ul {
+                        background-color: white;
+                        border-radius: 5px;
+                        a {
+                            padding-left: 35px;
+                        }
                     }
                 }
 
@@ -33,5 +76,15 @@ html,body {
     .page {
         flex: 1;
         background-color: white;
+        border-radius: 5px;
+        margin: 20px;
+        margin-left: 0;
+        padding: 20px 10px;
+        .input-group {
+            width: 100%;
+            .input-group-addon {
+                width: 100px;
+            }
+        }
     }
 }

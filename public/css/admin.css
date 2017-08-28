@@ -1,31 +1,83 @@
 html,
 body {
   height: 100%;
+  background-color: #E9ECF3;
 }
 .table .th_small {
   width: 80px !important;
 }
+.table td,
+.table th {
+  padding: 15px;
+  background-color: white !important;
+  border-bottom: 1px solid #F5F5F5 !important;
+}
+.table tr.active td,
+.table tr.active th {
+  background-color: #F2F6F9 !important;
+}
 .admin-app {
   display: flex;
   height: 100%;
-  align-items: stretch;
 }
 .admin-app .sidebar {
+  min-width: 300px;
   width: 300px;
-  background-color: #333;
+}
+.admin-app .sidebar .menu {
+  margin: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 0px inset;
 }
 .admin-app .sidebar .menu .tree-menu {
   border: none;
+  overflow: visible;
 }
-.admin-app .sidebar .menu .tree-menu li {
-  border-top: 1px solid #3F3F3F;
+.admin-app .sidebar .menu .tree-menu li .list-toggle {
+  top: 13px;
+}
+.admin-app .sidebar .menu .tree-menu li.open > a {
+  border-left: 3px solid #5c9acf !important;
+  margin-left: -3px;
+}
+.admin-app .sidebar .menu .tree-menu li.active a {
+  color: #5b9bd1;
+  background-color: #f2f6f9;
 }
 .admin-app .sidebar .menu .tree-menu li a {
-  color: #EEEEEE;
+  color: #485a6a;
   border: none;
   padding: 15px;
+}
+.admin-app .sidebar .menu .tree-menu li a:hover {
+  color: #5b9bd1;
+  background-color: #f2f6f9;
+}
+.admin-app .sidebar .menu .tree-menu li a:focus {
+  background-color: white;
+}
+.admin-app .sidebar .menu .tree-menu li a i {
+  margin-right: 5px;
+}
+.admin-app .sidebar .menu .tree-menu li ul {
+  background-color: white;
+  border-radius: 5px;
+}
+.admin-app .sidebar .menu .tree-menu li ul a {
+  padding-left: 35px;
 }
 .admin-app .page {
   flex: 1;
   background-color: white;
+  border-radius: 5px;
+  margin: 20px;
+  margin-left: 0;
+  padding: 20px 10px;
+}
+.admin-app .page .input-group {
+  width: 100%;
+}
+.admin-app .page .input-group .input-group-addon {
+  width: 100px;
 }

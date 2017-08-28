@@ -26,8 +26,8 @@
                     <li class="open">
                         <a href="#"><i class="icon icon-time"></i>内容管理</a>
                         <ul>
-                            <li><a href="{{url('/admin/articles/')}}">文章</a></li>
-                            <li><a href="{{url('/admin/categorys/')}}">栏目</a></li>
+                            <li class="active"><a href="{{url('/admin/articles/')}}"><i class="icon icon-angle-right"></i>文章</a></li>
+                            <li><a href="{{url('/admin/categorys/')}}"><i class="icon icon-angle-right"></i>栏目</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -36,7 +36,42 @@
     </div>
     <div class="page">
         <div class="container-fluid">
-            @yield('page')
+            <div class="row">
+                <form action="">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">姓名</span>
+                            <input type="text" class="form-control" placeholder="姓氏">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">姓名</span>
+                            <input type="text" class="form-control" placeholder="姓氏">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">姓名</span>
+                            <input type="text" class="form-control" placeholder="姓氏">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button class="btn btn-primary">新增</button>
+                    <button class="btn btn-danger">删除选中</button>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-12">
+                    @yield('page')
+                </div>
+            </div>
         </div>
     </div>
 </div>
