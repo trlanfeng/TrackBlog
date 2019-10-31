@@ -4,3 +4,6 @@
 [submodule "TrackBlog4-admin"]
 	path = TrackBlog4-admin
 	url = https://github.com/trlanfeng/TrackBlog4-admin.git
+[submodule "TrackBlog4-client"]
+	path = TrackBlog4-client
+	url = https://github.com/trlanfeng/TrackBlog4-client.git
